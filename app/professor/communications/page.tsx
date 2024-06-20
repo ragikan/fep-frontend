@@ -1,7 +1,7 @@
 import React from "react";
 
 const Communications = () => {
-  return <div>Communications</div>;
+  return <>Communications</>;
 };
 
 export default Communications;

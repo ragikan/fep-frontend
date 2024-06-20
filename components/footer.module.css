@@ -1,0 +1,150 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1200px; /* Adjust based on your layout */
+  padding: 20px;
+  background: url('https://github.com/tusharj23/images_project/blob/main/eimap-1.png?raw=true') center center / contain no-repeat;
+  animation: background-animation 20s ease-in-out infinite;
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.1); /* Bottom shadow */
+}
+
+@keyframes background-animation {
+  0% { background-position: calc(50% - 10px) center; }
+  50% { background-position: calc(50% + 10px) center; }
+  100% { background-position: calc(50% - 10px) center; }
+}
+
+.leftSection,
+.middleSection,
+.rightSection {
+  margin-bottom: 20px; /* Spacing between sections on mobile */
+}
+
+.leftSection p {
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Middle Section styles */
+.middleSection h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.middleSection ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.middleSection li a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.middleSection li a:hover {
+  text-decoration: underline;
+}
+
+/* Right Section styles */
+.rightSection h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.rightSection form {
+  display: flex;
+  flex-direction: column;
+}
+
+.rightSection input[type='email'] {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.rightSection button {
+  background-color: #0070f3;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.rightSection button:hover {
+  background-color: #0056b3;
+}
+
+/* Media queries for responsiveness */
+@media (min-width: 768px) {
+  .main {
+      flex-direction: row;
+      justify-content: space-between; /* Adjust based on your layout */
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-left: 40px;
+      padding-right: 40px;
+      gap: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.1); /* Bottom shadow */
+  }
+  .leftSection {
+      flex-basis: 30%;
+  }
+  .middleSection {
+      flex-basis: 30%;
+  }
+  .rightSection {
+      flex-basis: 30%;
+  }
+  .leftSection p {
+      font-size: 18px;
+  }
+  .middleSection h2 {
+      font-size: 24px;
+  }
+  .middleSection ul {
+      margin-top: 20px;
+  }
+  .middleSection li a {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #007bff;
+  }
+  .rightSection h2 {
+      font-size: 24px;
+  }
+  .rightSection form {
+      display: flex;
+      flex-direction: column;
+  }
+  .rightSection input[type='email'] {
+      height: 40px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+  }
+  .rightSection button {
+      height: 40px;
+      border-radius: 4px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color .3s;
+  }
+  .rightSection button:hover {
+      background-color: #0056b3;
+  }
+}
+
+@media (max-width: 767px) {
+  .main {
+      background: url('https://github.com/tusharj23/images_project/blob/main/eimap-1.png?raw=true') center center / contain no-repeat;
+      animation: none;
+      box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.1); /* Bottom shadow */
+  }
+}
