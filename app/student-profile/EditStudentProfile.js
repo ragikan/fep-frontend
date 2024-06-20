@@ -129,6 +129,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './EditStudentProfile.css';
+import Navbar from "@/components/Navbar";
 
 const EditStudentProfile = () => {
   const [studentData, setStudentData] = useState({
@@ -197,6 +198,9 @@ const EditStudentProfile = () => {
   };
 
   return (
+    <div>
+          <Navbar />
+
     <div className="container">
       <div>
         <h2>About</h2>
@@ -279,6 +283,7 @@ const EditStudentProfile = () => {
 
       <button onClick={handleSave}>Save</button>
     </div>
+            </div>
   );
 };
 
