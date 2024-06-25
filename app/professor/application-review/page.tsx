@@ -28,19 +28,26 @@ const Application = () => {
   }
 
 
-  return <p>
+  return <li>
     Applicant's Name: {applicant}
-    <>SOP: {sop}</>
+    <p>SOP: {sop}</p>
     <button onClick={accept}>{accepted? "Accepted":"Accept"}</button>
     <button onClick={reject}>{rejected? "Rejected":"Reject"}</button>
     <button onClick={hold}>{onhold? "On Hold":"hold"}</button>
-  </p>;
+  </li>;
 };
 
 const ApplicationReview = () =>{
   return <>
     <h1>Application Review</h1>
-    <Application /></>;
+    <ul>
+    <Application />
+    <Application />
+    <Application />
+    <Application />
+    <Application />
+    </ul>
+  </>;
 }
 
 export default ApplicationReview;
