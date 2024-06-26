@@ -1,11 +1,11 @@
 "use client"
-import '../css/tailwind.css'
+import '../../css/tailwind.css'
 export default function Home(){
     return (
         <>
             <div style={{backgroundColor:'rgb(249, 250, 251)'}} className="w-full p-2">
                <div className="w-full">
-                <center><img className='h-auto max-w-full' src="images/logo.png" /></center>
+                <center><img className='h-auto max-w-full' src="../images/logo.png" /></center>
                 </div>
                 <div className="w-full m-2">
                 <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl text-center font-sans w-full">Sign Up</h1>
@@ -29,6 +29,22 @@ export default function Home(){
     </div>
   </div>
   <div className="flex flex-wrap -mx-3 mb-6">
+    <div className="w-full px-3 mb-6 md:mb-0">
+      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+        Email
+      </label>
+      <input className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="email" placeholder="xyz@email.com" />
+    </div>
+  </div>
+  <div className="flex flex-wrap -mx-3 mb-6">
+    <div className="w-full px-3 mb-6 md:mb-0">
+      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+        UserName
+      </label>
+      <input className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="xyz" />
+    </div>
+  </div>
+  <div className="flex flex-wrap -mx-3 mb-6">
     <div className="w-full px-3">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
         Password
@@ -44,7 +60,7 @@ export default function Home(){
       </label>
       <div className="relative">
         <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-        <option disabled selected value></option>
+        <option disabled selected></option>
           <option>CSE</option>
           <option>EE</option>
           <option>ME</option>
@@ -81,7 +97,7 @@ export default function Home(){
       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
         Sign Up
       </button>
-      <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="/login">
+      <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="/student/login">
         Sign In
       </a>
     </div>
