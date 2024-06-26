@@ -54,7 +54,7 @@ export default function ProjectCard({ project }) {
         <Typography variant="body2" className={styles.cardDescription}>
           {project.description}
         </Typography>
-        <Link href={`/projects/${project.id}`} passHref>
+        <Link href={`/${project.id}`} passHref>
           <Button size="small" variant="contained" className={styles.readMoreButton}>
             Read More
           </Button>

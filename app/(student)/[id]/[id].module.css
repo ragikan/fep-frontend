@@ -1,0 +1,162 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+}
+
+.sidebar {
+  flex: 1;
+  margin-right: 20px;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.link {
+  display: inline-block; 
+  margin-bottom: 10px;
+  color: #0070f3;
+  text-decoration: none;
+  position: relative;
+}
+
+.link::after {
+  content: '';
+  height: 3px;
+  width: 0%;
+  background: #ff004f;
+  position: absolute;
+  left: 0;
+  bottom: -3px; 
+  transition: 0.5s;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+
+
+.main {
+  flex: 3;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.image {
+  width: 200px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.headerContent {
+  flex: 1;
+}
+
+.buttons {
+  margin-top: 10px;
+}
+
+.button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.buttonDisabled {
+  margin-right: 10px;
+  padding: 10px 20px;
+  background-color:#65c165;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.content {
+  margin-top: 20px;
+}
+
+.otherInformation {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.otherInfoTab {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.trophyIcon {
+  font-size: 24px;
+  color: #f39c12;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  background-color: #f5f5f5;
+  transition: background-color 0.3s;
+}
+
+.tab:hover {
+  background-color: #e0e0e0;
+}
+
+.activeTab {
+  background-color: white;
+  border-bottom: 2px solid #0070f3;
+}
+
+.tabContent {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-top: none;
+  animation: flip 0.6s ease-out;
+}
+
+@keyframes flip {
+  from {
+    transform: rotateX(-90deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateX(0);
+    opacity: 1;
+  }
+}
+
+.mainHeading {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.subHeading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}

@@ -3,6 +3,10 @@
 // components/Navbar.js
 import { useState } from 'react';
 import styles from './Navbar.module.css';
+import AccountTreeOutlinedIcon from '@mui/icons-material/AccountTreeOutlined';
+import BookmarksOutlinedIcon from '@mui/icons-material/BookmarksOutlined';
+import LeaderboardOutlinedIcon from '@mui/icons-material/LeaderboardOutlined';
+import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 
 export default function Navbar() {
 const [isOpen, setIsOpen] = useState(false);
@@ -18,10 +22,10 @@ return (
 Foreign Training Program
 </div>
 <div className={styles.links}>
-<a href="/projects">Projects</a>
-<a href="/favorites">Bookmarks</a>
-<a href="/scholarships">Scholarships</a>
-<a href="/results">Results</a>
+<a href="/projects" className={styles.link}> <AccountTreeOutlinedIcon /> Projects</a>
+<a href="/favorites" className={styles.link}> <BookmarksOutlinedIcon /> Bookmarks</a>
+<a href="/scholarships" className={styles.link}><SchoolOutlinedIcon />Scholarships</a>
+<a href="/results" className={styles.link}><LeaderboardOutlinedIcon /> Results</a>
 {/* <a href="/faq"></a> */}
 </div>
 <div className={styles.profile}>
