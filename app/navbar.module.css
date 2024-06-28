@@ -1,0 +1,665 @@
+ .bod1 {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style:none;
+    
+  }
+
+.navsty {
+    background: #0f0c29;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 80px;
+    width:100%;
+
+}
+
+.logo {
+    color:white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 100px;
+    font-weight: bold;
+}
+
+.ulu {
+    float: right;
+    margin-right: 20px;
+    }
+
+.lii {
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+
+.liink {
+    color: white;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+.liink:hover {
+  background: #1b9bff;
+  transition: .5s;
+}
+
+.checkbtn {
+    font-size:30px;
+    color: white;
+    float:right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
+@media (max-width: 952px){
+    .checkbtn {
+        font-size: 30px;
+        padding-left: 50px; 
+    }
+    .liink {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 858px){
+    .checkbtn {
+        display: block;
+    }
+    .ulu {
+        position : fixed;
+        width: 100%;
+        height: 100vh;
+        background: #2c3e50;
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+    }
+     .lii{
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+
+     }
+     .liink {
+        font-size: 20px;
+     }
+     .liink:hover, .liink.active{
+        background: none;
+        color: #0082e6;
+     }
+
+     #check:checked ~ .ulu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        background-color: #333;
+        padding: 20px;
+        z-index: 999;
+        transition: all 0.5s ease;
+      }
+    
+    }
+
+
+
+
+
+    .bod {
+        margin: 0;
+        padding: 0;
+        
+      }
+      
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+        background: #0f0c29;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+      }
+      
+      .content {
+        text-align: center;
+        margin: 20px;
+      }
+      
+      .centeredHeading {
+        font-size: 4.5rem ;
+        margin-bottom: 10px;
+        color: #e6eeff;
+        font-weight: 700;
+        font-family: serif;
+        
+
+      }
+      
+      .tagline {
+        font-size: 1.8rem;
+        color: #fff;
+        margin-bottom: 20px;
+        font-weight: 400;
+      }
+      
+      .description {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 30px;
+        color: #ccddff;
+        margin-right: 50px;
+        margin-left: 50px;
+      }
+      
+      /* Apply button styles */
+      .applyButton {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #002b80; /* Button background color */
+        color: #fff; /* Button text color */
+        text-decoration: none;
+        border-radius: 25px; /* Rounded edges */
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+      
+      .applyButton:hover {
+        background-color: #ccddff; /* Darker color on hover */
+        transform: scale(1.05); /* Scale up slightly on hover */
+        color: black;
+        font-weight: 400;
+        shadow: 1px 1px 2px white, 0 0 25px white, 0 0 10px white;
+      }
+
+
+    
+
+
+
+    .sectionHeading {
+        font-size: 2.5rem;
+        margin-top: 40px;
+        text-align: center;
+        font-weight: 550;
+        font-family: serif;
+      }
+      
+      /* Product grid styles */
+      .productGrid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        max-width: 1200px;
+        margin: auto;
+        
+
+      }
+      
+      /* Product box styles */
+      .productBox {
+        background-color: lightblue;
+        flex: 1 1 calc(50% - 20px);
+        height: 0;
+        padding-bottom: calc(50% - 20px);
+        box-sizing: border-box;
+        
+      }
+
+      @media (max-width: 768px) {
+        .square {
+          width: calc(50% - 20px);
+          padding-bottom: calc(50% - 20px);
+        }
+      }
+      
+      /* styles.module.css */
+
+.productBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 300px;
+    height: 400px;
+    margin: 20px;
+    background: #0f0c29;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+     transition: transform 2.0s, box-shadow 2.0s;
+  }
+  
+  .productBox:hover {
+    background: black;
+    .prodicon {
+        transform: rotate(360deg);
+        font-shadow: 1px 1px 2px white, 0 0 25px grey, 25px 25px 25px white;
+      }
+  }
+
+  .iconBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .prodicon {
+    font-size: 100px;
+    color: #e6eeff;
+    transition: transform 2.0s, box-shadow 2.0s;
+  }
+  
+  .prodicon h3 {
+    margin: 10px 0;
+    
+  }
+  
+  .iconBox h3 {
+    margin-top: 20px; /* Adds some space between the icon and the title */
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
+  }
+  
+  .iconBox p {
+    margin-top: 10px; /* Adds some space between the title and the description */
+    color: white;
+  }
+  
+
+
+
+
+
+      /* styles.css */
+
+ 
+  .container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0; /* Background color for demonstration */
+  }
+  
+  /* Style for the content */
+  .content1 {
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+  }
+  
+  /* Image section styles */
+  .imageSection {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  /* Main image styles */
+  .mainImage {
+    max-width: 300px; /* Adjust width as needed */
+    padding-right: 20px; /* Right padding for spacing */
+  }
+  
+  /* Image description styles */
+  .imageDescription {
+    flex: 1; /* Take remaining width */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .imageHeading {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .imageDialogue {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+  }
+
+  
+
+
+
+
+
+  
+  /* Center the slider container vertically and horizontally */
+  /* styles.module.css */
+
+  .section {
+    
+    
+  }
+
+
+  .card {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .cardImage {
+     border: 2px solid black;
+     min-width: 400px;
+     border-radius: 10%;
+     margin: 50px 50px 0px 50px;
+     min-height: 80vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+  }
+
+  .images {
+
+  }
+ 
+   .cardContent {
+     border-left: 5px solid darkblue;
+     min-width: 400px;
+     height: 80vh; 
+     align-self: center;
+     margin-top: 0;
+     margin: 50px;
+   }
+    
+   .CardTitle {
+    
+    font-size: 3rem;
+    text-align: center;
+    font-weight: 530;
+    font-family: serif;
+   }
+    
+   .cardDescription{
+     margin-left: 30px;
+   }
+
+   @media (max-width: 900px) {
+    .card {
+        display: flex;
+        flex-direction: column;
+    }
+    
+   }
+  
+  
+    
+    
+    
+    
+    
+    
+    
+    
+
+/* styles.css */
+
+   
+  
+  .container2 {
+    display: flex;
+    height: 100vh;
+    background-color: #ff6347; /* Vibrant background color */
+    color: #fff;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+  
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 2rem;
+  }
+  
+  .title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .description {
+    font-size: 1.25rem;
+  }
+  
+  .right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .imageGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+  }
+  
+  .image {
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
+    border: 2px solid #000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*5 logo section*/
+  .circleCirc {
+    
+  }
+
+  .circleGrid {
+    border: 2px solid red;
+  }
+
+  .circleItem {
+    border: 2px solid black;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .circleLogo {
+    border: 2px solid blue;
+  }
+
+  .circleText {
+    border: 2px solid yellow;
+  }
+
+
+
+
+  
+  
+
+
+
+
+
+  .teamSection {
+    padding: 2rem;
+    background-color: #f5f5f5;
+    text-align: center;
+  }
+  
+  .teamTitle {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .teamGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
+  .teamBox {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .teamImage {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .teamBox:hover .overlay {
+    opacity: 1;
+  }
+  
+  .teamName {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .socialIcons {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .socialIcon {
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+
+
+
+
+
+
+
+
+  
+  .contactSection {
+    max-width: 600px;
+    margin: 2rem auto;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contactTitle {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  
+  .contactForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .formGroup {
+    margin-bottom: 1rem;
+  }
+  
+  .formLabel {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: #333;
+  }
+  
+  .formInput,
+  .formTextarea {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .formTextarea {
+    height: 100px;
+  }
+  
+  .formButton {
+    padding: 0.75rem;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .formButton:hover {
+    background-color: #0056b3;
+  }
+  
