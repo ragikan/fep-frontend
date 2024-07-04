@@ -1,38 +1,41 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
+"use client";
+
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const ProfProfilePage = () => {
   const [profData, setProfData] = useState({
-    fullName: '',
-    university: '',
-    projectoffered: '',
-    phoneNumber: '',
-    email: '',
-    profilePictureUrl: '',
+    fullName: "",
+    university: "",
+    projectoffered: "",
+    phoneNumber: "",
+    email: "",
+    profilePictureUrl: "",
   });
-  const [imageUrl, setImageUrl] = useState('');
+  const [imageUrl, setImageUrl] = useState("");
   const [isEditing, setIsEditing] = useState(false);
-  const router = useRouter();
+  // const router = useRouter();
 
   useEffect(() => {
-    axios.get('/api/prof-profile')
-      .then(response => setProfData(response.data))
-      .catch(error => console.error('Error fetching data:', error));
+    axios
+      .get("/api/prof-profile")
+      .then((response) => setProfData(response.data))
+      .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
   useEffect(() => {
     const fetchImage = async () => {
       try {
-        const response = await axios.get('/api/prof-profile-image');
+        const response = await axios.get("/api/prof-profile-image");
         if (response.status === 200) {
           setImageUrl(response.data.imageUrl);
         } else {
-          console.error('Failed to fetch image');
+          console.error("Failed to fetch image");
         }
       } catch (error) {
-        console.error('Error fetching image:', error);
+        console.error("Error fetching image:", error);
       }
     };
 
@@ -41,38 +44,40 @@ const ProfProfilePage = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setProfData(prevState => ({
+    setProfData((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleFileChange = (e) => {
     const { name, files } = e.target;
     const formData = new FormData();
-    formData.append('file', files[0]);
+    formData.append("file", files[0]);
 
-    axios.post(`/api/upload/${name}`, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    })
-      .then(response => {
-        setProfData(prevState => ({
+    axios
+      .post(`/api/upload/${name}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        setProfData((prevState) => ({
           ...prevState,
-          [`${name}Url`]: response.data.url
+          [`${name}Url`]: response.data.url,
         }));
       })
-      .catch(error => console.error('Error uploading file:', error));
+      .catch((error) => console.error("Error uploading file:", error));
   };
 
   const handleSave = () => {
-    axios.post('/api/update-prof-profile', profData)
-      .then(response => {
-        console.log('Data saved successfully');
+    axios
+      .post("/api/update-prof-profile", profData)
+      .then((response) => {
+        console.log("Data saved successfully");
         setIsEditing(false);
       })
-      .catch(error => console.error('Error saving data:', error));
+      .catch((error) => console.error("Error saving data:", error));
   };
 
   return (
@@ -83,34 +88,69 @@ const ProfProfilePage = () => {
             <h2>About</h2>
             <label>
               Full name:
-              <input type="text" name="fullName" value={profData.fullName} onChange={handleChange} />
+              <input
+                type="text"
+                name="fullName"
+                value={profData.fullName}
+                onChange={handleChange}
+              />
             </label>
             <label>
               Profile Picture:
-              <input type="file" name="profilePicture" onChange={handleFileChange} />
+              <input
+                type="file"
+                name="profilePicture"
+                onChange={handleFileChange}
+              />
             </label>
-            {profData.profilePictureUrl && <img src={profData.profilePictureUrl} alt="Profile" className="profileImage" />}
+            {profData.profilePictureUrl && (
+              <img
+                src={profData.profilePictureUrl}
+                alt="Profile"
+                className="profileImage"
+              />
+            )}
           </div>
           <div>
             <h2>Academic Details</h2>
             <label>
               University:
-              <input type="text" name="university" value={profData.university} onChange={handleChange} />
+              <input
+                type="text"
+                name="university"
+                value={profData.university}
+                onChange={handleChange}
+              />
             </label>
             <label>
               Project offered:
-              <input type="text" name="projectoffered" value={profData.projectoffered} onChange={handleChange} />
+              <input
+                type="text"
+                name="projectoffered"
+                value={profData.projectoffered}
+                onChange={handleChange}
+              />
             </label>
           </div>
           <div>
             <h2>Contact Details</h2>
             <label>
               Phone Number:
-              <input type="text" name="phoneNumber" value={profData.phoneNumber} onChange={handleChange} />
+              <input
+                type="text"
+                name="phoneNumber"
+                value={profData.phoneNumber}
+                onChange={handleChange}
+              />
             </label>
             <label>
               Alternate Email:
-              <input type="text" name="email" value={profData.email} onChange={handleChange} />
+              <input
+                type="text"
+                name="email"
+                value={profData.email}
+                onChange={handleChange}
+              />
             </label>
           </div>
           <div className="buttonContainer">
@@ -119,7 +159,11 @@ const ProfProfilePage = () => {
         </>
       ) : (
         <>
-          {imageUrl ? <img src={imageUrl} alt="Profile" className="passportImage" /> : <p>Loading image...</p>}
+          {imageUrl ? (
+            <img src={imageUrl} alt="Profile" className="passportImage" />
+          ) : (
+            <p>Loading image...</p>
+          )}
           <div>
             <p>Full name: {profData.fullName}</p>
           </div>
@@ -155,7 +199,8 @@ const ProfProfilePage = () => {
           margin-bottom: 20px;
         }
 
-        label, p {
+        label,
+        p {
           margin-bottom: 10px;
           display: block;
         }
@@ -187,7 +232,8 @@ const ProfProfilePage = () => {
           text-align: center;
         }
 
-        .passportImage, .profileImage {
+        .passportImage,
+        .profileImage {
           display: block;
           width: 100px;
           height: 100px;
@@ -201,4 +247,3 @@ const ProfProfilePage = () => {
 };
 
 export default ProfProfilePage;
-
