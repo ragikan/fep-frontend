@@ -1,5 +1,5 @@
 "use client"
-import '../../css/tailwind.css'
+import '../../css/tailwind.css';
 export default function Home(){
     return (
         <>
