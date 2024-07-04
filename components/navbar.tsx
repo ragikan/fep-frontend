@@ -7,14 +7,11 @@ import AccountTreeOutlinedIcon from "@mui/icons-material/AccountTreeOutlined";
 import BookmarksOutlinedIcon from "@mui/icons-material/BookmarksOutlined";
 import LeaderboardOutlinedIcon from "@mui/icons-material/LeaderboardOutlined";
 import SchoolOutlinedIcon from "@mui/icons-material/SchoolOutlined";
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
   const toggleDialog = () => {
     setIsOpen(!isOpen);
   };
-
   return (
     <nav className={styles.navbar}>
       <div className={styles.brand}>
