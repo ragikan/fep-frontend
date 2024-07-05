@@ -12,9 +12,9 @@
 }
 
 .link {
-  display: inline-block; 
+  display: inline-block;
   margin-bottom: 10px;
-  color: #0070f3;
+  color: rgb(69, 124, 184);
   text-decoration: none;
   position: relative;
 }
@@ -33,8 +33,6 @@
 .link:hover::after {
   width: 100%;
 }
-
-
 
 .main {
   flex: 3;
@@ -154,9 +152,30 @@
   font-weight: bold;
 }
 
+.Heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(26, 26, 206);
+  margin-top: 20px;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-self: center;
+}
+
 .subHeading {
   font-size: 1.5rem;
   font-weight: bold;
   margin-top: 20px;
   margin-bottom: 10px;
+}
+
+.readMoreButton {
+  background: none;
+  border: none;
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  margin: 0;
+  font-size: 1em;
 }

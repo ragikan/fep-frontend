@@ -2,6 +2,7 @@
 // footer.tsx
 import React from "react";
 import styles from './footer.module.css';
+import KeyboardArrowRightSharpIcon from '@mui/icons-material/KeyboardArrowRightSharp';
 export default function Footer() {
   return (
     <footer style={{ textAlign: "center", padding: "1rem", background: "white", color: "black" }}>
@@ -17,10 +18,10 @@ export default function Footer() {
           <h2><strong>Useful Links:</strong></h2>
           <ul>
             {/* this are just for display as for now  */}
-            <li><a href="/faq">F.A.Q</a></li>
-            <li><a href="/about">Contact us</a></li>
-            <li><a href="/notice">About us</a></li>
-            <li><a href="/notice">Notice Boards</a></li>
+            <li><a href="/faq"><KeyboardArrowRightSharpIcon /> F.A.Q</a></li>
+            <li><a href="/about"><KeyboardArrowRightSharpIcon /> Contact us</a></li>
+            <li><a href="/notice"><KeyboardArrowRightSharpIcon /> About us</a></li>
+            <li><a href="/notice"><KeyboardArrowRightSharpIcon /> Notice Boards</a></li>
           </ul>
         </section>
 
