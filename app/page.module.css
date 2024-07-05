@@ -1,0 +1,89 @@
+.tj1 {
+    font-size: 7.5vw;
+    font-weight: 900;
+    position: relative;
+    color: white; 
+  }
+  
+  .tj1::before {
+    content: "CHEMINEERS SOCIETY IIT KANPUR";
+    position: absolute;
+    top: 0; 
+    left: 0;
+    color: transparent; 
+    -webkit-text-stroke: 1.5px #95c11e; 
+    z-index: -1;
+  }
+  
+  .root {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .appBar {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    box-shadow: none;
+  }
+  
+  .toolbar {
+    justify-content: space-between;
+  }
+  
+  .navLinks {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+  }
+  
+  .navLinksHidden {
+    display: none;
+  }
+  
+  .menuButton {
+    display: none;
+  }
+  
+  .content {
+    margin-top: 64px;
+    color: white; 
+  }
+  
+  .button {
+    align-items: center;
+    justify-content: center;
+    background-color: #0d47a1;
+    color: #fff;
+    margin-top: 20px;
+    width: fit-content;
+  }
+  
+  .header {
+    text-align: center;
+    margin-top: 0;
+    background-image: url('https://github.com/tusharj23/images_project/blob/main/Designer.png?raw=true');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white; 
+  }
+  
+  .subtitle {
+    margin: 20px 0;
+    color:red;
+    text-shadow: #0d47a1;
+  }
+  
+  @media (max-width: 600px) {
+    .navLinks {
+      display: none;
+    }
+  
+    .menuButton {
+      display: block;
+    }
+  }
+  
