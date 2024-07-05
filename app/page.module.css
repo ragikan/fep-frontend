@@ -1,89 +1,217 @@
+/* page.module.css */
+
+/* Global Styles */
+.root {
+  margin: 0;
+  padding: 0;
+}
+
+/* AppBar and Toolbar */
+.appBar {
+  background-color: rgba(0, 0, 0, 0.7); /* More transparent background */
+  box-shadow: none;
+}
+
+.toolbar {
+  justify-content: space-between;
+}
+
+.navLinks {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.menuButton {
+  display: none;
+}
+
+.content {
+  margin-top: 64px;
+  color: black; /* Ensure text is visible */
+}
+
+/* Button Styles */
+.button {
+  background-color: #0d47a1;
+  color: #fff;
+  margin-top: 20px;
+  width: fit-content;
+}
+
+/* Header Styles */
+.header {
+  position: relative;
+  text-align: center;
+  margin-top: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white; /* Ensure text is visible */
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://github.com/tusharj23/images_project/blob/main/Designer.png?raw=true');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
 .tj1 {
-    font-size: 7.5vw;
-    font-weight: 900;
-    position: relative;
-    color: white; 
+  display: inline-block;
+  font-size: 7.5vw;
+  font-weight: 900;
+  position: relative;
+  color: white;
+}
+
+.tj1::before {
+  content: "Foreign Training Program";
+  position: absolute;
+  color: #000;
+  top: 2px;
+  left: 150px;
+  -webkit-text-stroke: 1.5px #95c11e;
+  z-index: -1;
+}
+
+
+.tj2{
+  color: #000;
+  font-size: 1.2rem;
+}
+
+.subtitle {
+  margin: 20px 0;
+  color: red;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  font-size: 3vw;
+}
+
+@media (max-width: 600px) {
+  .tj1 {
+    font-size: 2.5rem;
   }
-  
-  .tj1::before {
-    content: "CHEMINEERS SOCIETY IIT KANPUR";
-    position: absolute;
-    top: 0; 
-    left: 0;
-    color: transparent; 
-    -webkit-text-stroke: 1.5px #95c11e; 
-    z-index: -1;
-  }
-  
-  .root {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .appBar {
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    box-shadow: none;
-  }
-  
-  .toolbar {
-    justify-content: space-between;
-  }
-  
-  .navLinks {
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
-  }
-  
-  .navLinksHidden {
-    display: none;
-  }
-  
-  .menuButton {
-    display: none;
-  }
-  
-  .content {
-    margin-top: 64px;
-    color: white; 
-  }
-  
-  .button {
-    align-items: center;
-    justify-content: center;
-    background-color: #0d47a1;
-    color: #fff;
-    margin-top: 20px;
-    width: fit-content;
-  }
-  
-  .header {
-    text-align: center;
-    margin-top: 0;
-    background-image: url('https://github.com/tusharj23/images_project/blob/main/Designer.png?raw=true');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: white; 
-  }
-  
+
   .subtitle {
-    margin: 20px 0;
-    color:red;
-    text-shadow: #0d47a1;
+    font-size: 1.2rem;
   }
-  
-  @media (max-width: 600px) {
-    .navLinks {
-      display: none;
-    }
-  
-    .menuButton {
-      display: block;
-    }
+
+  .tj2 {
+    font-size: 1rem;
+    max-width: 80%;
   }
-  
+}
+
+/* Section Styles */
+.section {
+  margin: 40px 0;
+}
+
+.sectionHeading {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #0d47a1; /* Ensure text is visible */
+}
+
+.sectionContent {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* Drawer Styles */
+.drawerContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.drawerHeader {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.drawerHeader button {
+  margin-right: 16px;
+  margin-top: 16px;
+}
+
+#team {
+  color: #000;
+}
+
+/* FAQ Styles */
+.accordion {
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.accordionSummary {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.accordionDetails {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Contact Us Styles */
+.contactCard {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 20px;
+}
+
+.textField {
+  background-color: white;
+}
+
+.messageField {
+  max-height: 150px;
+  overflow-y: auto;
+  background-color: white;
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+  .navLinks {
+    display: none;
+  }
+
+  .menuButton {
+    display: block;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* .tj1 {
+  display: inline-block;
+  font-size: 7.5vw;
+  font-weight: 900;
+  position: relative;
+  color: white;
+}
+
+.tj1::before {
+  content: "Foreign Training Program";
+  position: absolute;
+  color: #000;
+  top: 2px;
+  left: 150px;
+  -webkit-text-stroke: 1.5px #95c11e;
+  z-index: -1;
+} */

@@ -1,0 +1,373 @@
+.bod1 {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style:none;
+    
+  }
+
+
+
+
+    
+
+
+
+    .sectionHeading {
+        font-size: 2.5rem;
+        margin-top: 40px;
+        text-align: center;
+        font-weight: 550;
+        font-family: serif;
+      }
+      
+      /* Product grid styles */
+      .productGrid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        max-width: 1200px;
+        margin: auto;
+        
+
+      }
+      
+      /* Product box styles */
+      .productBox {
+        background-color: lightblue;
+        flex: 1 1 calc(50% - 20px);
+        height: 0;
+        padding-bottom: calc(50% - 20px);
+        box-sizing: border-box;
+        
+      }
+
+      @media (max-width: 768px) {
+        .square {
+          width: calc(50% - 20px);
+          padding-bottom: calc(50% - 20px);
+        }
+      }
+      
+      /* styles.module.css */
+
+.productBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 300px;
+    height: 400px;
+    margin: 20px;
+    background: #0f0c29;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+     transition: transform 2.0s, box-shadow 2.0s;
+  }
+  
+  .productBox:hover {
+    background: black;
+    .prodicon {
+        transform: rotate(360deg);
+        font-shadow: 1px 1px 2px white, 0 0 25px grey, 25px 25px 25px white;
+      }
+  }
+
+  .iconBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .prodicon {
+    font-size: 100px;
+    color: #e6eeff;
+    transition: transform 2.0s, box-shadow 2.0s;
+  }
+  
+  .prodicon h3 {
+    margin: 10px 0;
+    
+  }
+  
+  .iconBox h3 {
+    margin-top: 20px; /* Adds some space between the icon and the title */
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
+  }
+  
+  .iconBox p {
+    margin-top: 10px; /* Adds some space between the title and the description */
+    color: white;
+  }
+  
+
+
+
+
+
+      /* styles.css */
+
+ 
+  .container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0; /* Background color for demonstration */
+  }
+  
+  /* Style for the content */
+  .content1 {
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+  }
+  
+  /* Image section styles */
+  .imageSection {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  /* Main image styles */
+  .mainImage {
+    max-width: 300px; /* Adjust width as needed */
+    padding-right: 20px; /* Right padding for spacing */
+  }
+  
+  /* Image description styles */
+  .imageDescription {
+    flex: 1; /* Take remaining width */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .imageHeading {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .imageDialogue {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+  }
+
+  
+
+
+
+
+
+  
+  /* Center the slider container vertically and horizontally */
+  /* styles.module.css */
+
+  .section {
+    
+    
+  }
+
+
+  .card {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .cardImage {
+     border: 2px solid black;
+     min-width: 400px;
+     border-radius: 10%;
+     margin: 50px 50px 0px 50px;
+     min-height: 80vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+  }
+
+  .images {
+
+  }
+ 
+   .cardContent {
+     border-left: 5px solid darkblue;
+     min-width: 400px;
+     height: 80vh; 
+     align-self: center;
+     margin-top: 0;
+     margin: 50px;
+   }
+    
+   .CardTitle {
+    
+    font-size: 3rem;
+    text-align: center;
+    font-weight: 530;
+    font-family: serif;
+   }
+    
+   .cardDescription{
+     margin-left: 30px;
+   }
+
+   @media (max-width: 900px) {
+    .card {
+        display: flex;
+        flex-direction: column;
+    }
+    
+   }
+  
+  
+    
+    
+    
+    
+    
+    
+    
+    
+
+/* styles.css */
+
+   
+  
+  .container2 {
+    display: flex;
+    height: 100vh;
+    background-color: #ff6347; /* Vibrant background color */
+    color: #fff;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+  
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 2rem;
+  }
+  
+  .title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .description {
+    font-size: 1.25rem;
+  }
+  
+  .right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .imageGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+  }
+  
+  .image {
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
+    border: 2px solid #000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+
+
+
+
+
+
+
+
+
+.bodi{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  
+}
+
+.productContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid ;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  text-align: center;
+}
+
+.productImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.productDescription {
+  font-size: 16px;
+  color: #333;
+}
+
+.skills {
+  font-size: 35px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-family: serif;
+}
+
+@media (max-width: 768px) {
+  .productContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+  
+
+
+
+
+  
+  
+
+
+
+
+
+  
