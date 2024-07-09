@@ -8,6 +8,7 @@ import {
 export interface SignUpStudentParams {
   user_id: string;
   password:string;
+  confirm_password:string;
   user_otp:string;
 }
 const authInstance = axios.create({

@@ -24,6 +24,7 @@ export default function Home(){
     const {
       register: registerOTP,
       handleSubmit: handleSubmitOTP,
+      getValues:gettervalues,
       formState: { errors: errorsOTP },
     } = useForm<OTPParams>();
     const sendUser = async (data: ResetStudentParams) => {
@@ -63,12 +64,29 @@ export default function Home(){
                 <div className="md:w-full lg:w-6/12">
                 <div>
                 <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg">
-  <div className="flex flex-wrap -mx-3 mb-6">
+  {isOTP?<>
+    <div className="flex flex-wrap -mx-3 mb-6">
     <div className="w-full px-3 mb-6 md:mb-0">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
         UserName
       </label>
-      <input id="user_id" onChange={(event)=>{setUser(event.currentTarget.value)}} disabled={!isOTP} className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="230618" />
+      <input id="user_id" {...registerOTP("user_id", {
+              required: true,
+              pattern: /^[^@]+@iitk\.ac\.in$/,
+              setValueAs: (value) => value.trim().toLowerCase(),
+            })} onChange={(event)=>{setUser(event.currentTarget.value)}} disabled={!isOTP} className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="mahirj23@iitk.ac.in" />
+     {errorsOTP.user_id?<span className="text-red-600 text-xs italic">Invalid IITK Email ID</span>:<></>}
+    </div>
+  </div>
+  <div className="flex flex-wrap -mx-3 mb-6">
+    <div className="w-full px-3">
+      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
+        Password
+      </label>
+      <input {...registerOTP("password", { required: true })} id="password" onChange={(event)=>{setPassword(event.currentTarget.value)}} disabled={!isOTP} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="password" placeholder="******************" />
+      {errorsOTP.password && (
+          <p className="text-red-600 text-xs italic">Incorrect Password</p>
+        )} 
     </div>
   </div>
   <div className="flex flex-wrap -mx-3 mb-6">
@@ -76,18 +94,30 @@ export default function Home(){
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
         New Password
       </label>
-      <input id="password" onChange={(event)=>{setPassword(event.currentTarget.value)}} disabled={!isOTP} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="password" placeholder="******************" />
-      <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
+      <input {...registerOTP("confirm_password", {
+            required: true,
+            validate: {
+              sameAsPassword: (value) => value === gettervalues("password"),
+            },
+          })} id="confirm-password" onChange={(event)=>{setPassword(event.currentTarget.value)}} disabled={!isOTP} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="password" placeholder="******************" />
+    {errorsOTP.confirm_password && (
+           <p className="text-red-600 text-xs italic">Passwords do not match</p>
+        )}
     </div>
   </div>
+  </>:<>
   <div className="flex flex-wrap -mx-3 mb-6">
     <div className="w-full px-3">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
         UserOTP
       </label>
-      <input id="user_otp" disabled={isOTP} onChange={(event)=>{setOTP(event.currentTarget.value)}} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="" />
+      <input id="user_otp" {...registerUser("otp",{required:true})} disabled={isOTP} onChange={(event)=>{setOTP(event.currentTarget.value)}} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" value={otp} placeholder="123456" />
+      {errors.otp && (
+           <p className="text-red-600 text-xs italic">Enter OTP</p>
+        )}
     </div>
   </div>
+  </>}
   <div className="flex items-center justify-between mt-6">
       {isOTP?<>
       <LoadingButton loading={loadingsignup} onClick={handleSubmitOTP(sendOTP)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">

@@ -50,13 +50,23 @@ export default function Home(){
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
         USERNAME
       </label>
-      <input onChange={(event)=>{setUser(event.currentTarget.value)}} className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="username" type="text" placeholder="" />
+      <input {...registerUser("user_id", {
+              required: true,
+              pattern: /^[^@]+@iitk\.ac\.in$/,
+              setValueAs: (value) => value.trim().toLowerCase(),
+            })} onChange={(event)=>{setUser(event.currentTarget.value)}} className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="username" type="text" placeholder="" />
+      {errors.user_id?<span className="text-red-600 text-xs italic">Invalid IITK Email ID</span>:<></>}
     </div>
-    <div className="w-full  px-3">
+    <div className="w-full  mt-3 px-3">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
         PASSWORD
       </label>
-      <input onChange={(event)=>{setPassword(event.currentTarget.value)}} id="password" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="password" placeholder="******************" />
+      <input {...registerUser("password", {
+              required: true
+            })} onChange={(event)=>{setPassword(event.currentTarget.value)}} id="password" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="password" placeholder="******************" />
+     {errors.password && (
+          <p className="text-red-600 text-xs italic">Incorrect Password</p>
+        )} 
     </div>
   </div>
     <div className="flex items-center justify-between">

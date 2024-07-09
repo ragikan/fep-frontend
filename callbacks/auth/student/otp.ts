@@ -9,6 +9,8 @@ import { errorNotification, pushNotification } from "../../notification";
 
 export interface OTPParams {
   user_id: string;
+  password:string;
+  confirm_password:string;
 }
 const authInstance = axios.create({
   baseURL: STUDENT_AUTH_URL,
