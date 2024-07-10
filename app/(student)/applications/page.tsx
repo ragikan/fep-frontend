@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link'; 
 import Head from 'next/head';
 import Box from '@mui/material/Box';
@@ -11,6 +11,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import ProjectCard from '@/components/ProjectCard'; 
 import styles from './applications.module.css';
+import { getAllProjects } from '@/components/api'; // Import the getAllProjects function
 
 const style = {
   position: 'absolute',
@@ -23,24 +24,26 @@ const style = {
   p: 4,
 };
 
-export default function Home() {
+export default function Projects() {
   const [open, setOpen] = useState(false);
+  const [projects, setProjects] = useState([]);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  // sample data taken from given website  else the project card component is generalised will be integrated to backend later 
-  const projects = [
-    {
-      id: 1,
-      image: 'https://ircell.iitkgp.ac.in/media/George-Gilbert-Scott-Cambridge-St-Johns-College_zQtFT8P.webp',
-      title: 'Frugal Innovation in India\'s Space Sector and Its Socio-Economic Impacts',
-      institution: 'Judge Business School, University of Cambridge',
-      mode: 'Remote',
-      deadline: 'March 20, 2024',
-      description: 'Project Overview: We are inviting research interns to participate in a study exploring frugal innovation within India\'s space sector. The project aims to understand how cost-effective and resource-efficient solutions in space technology have socio-economic impacts, particularly focusing on digital platforms.',
-    },
-    // can add more projects 
-  ];
+  useEffect(() => {
+    // Fetch projects from the backend
+    const fetchProjects = async () => {
+      try {
+        const response = await getAllProjects(); // Use the getAllProjects function from api.js
+        setProjects(response.data); // Assuming the API response contains the project data in the data property
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+      }
+    };
+
+    fetchProjects();
+  }, []);
 
   return (
     <div className={styles.container}>
