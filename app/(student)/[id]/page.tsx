@@ -1,6 +1,7 @@
+// app/(student)/[id]/page.tsx
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import styles from './[id].module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,6 +17,8 @@ import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents, LayersCon
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import 'leaflet-control-geocoder';
+import { useRouter } from 'next/router';
+import { getProjectById } from '@/components/api'; // Import the getProjectById function
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -23,28 +26,6 @@ L.Icon.Default.mergeOptions({
   iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
   shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
 });
-
-const projectData = {
-  id: '1',
-  title: "Frugal Innovation in India's Space Sector and Its Socio-Economic Impacts",
-  university: 'Judge Business School, University of Cambridge',
-  location: 'England',
-  UniversityDescription: 'The University of Cambridge, established in 1209, is one of the world\'s oldest and most prestigious universities, located in Cambridge, England. It is renowned for its academic excellence and contributions to research, making it a leading institution in various fields. Cambridge is home to 31 autonomous colleges, each with its own unique history and traditions, providing a close-knit community for students. The university offers a wide range of undergraduate and postgraduate courses, covering subjects from arts and humanities to sciences and technology. Cambridge is known for its rigorous academic standards, challenging students to excel in their chosen fields. The university boasts a strong research culture, with many groundbreaking discoveries and innovations originating from its laboratories and libraries. Apart from academics, Cambridge offers a vibrant student life, with numerous clubs, societies, and events catering to diverse interests. The city of Cambridge itself is steeped in history and culture, providing a picturesque backdrop for students to explore and enjoy. Overall, the University of Cambridge continues to uphold its reputation as a world-class institution, attracting students and scholars from around the globe who seek to be part of its rich academic tradition.',
-  otherInformation: {
-    ranking: '#233',
-  },
-  projectDetails: {
-    description: 'Time-series data popularly exists in all forms of sensor data, stock markets, and different kinds of temporal tracking and forecasting applications. In the last decades, although time-series data have attracted an explosion of interest in the data mining community, time-series data mining is still far behind other kinds of data mining techniques. The problem definitions in the time-series scenario are significantly diverse. The anomaly detection problem for time series is usually formulated as identifying outlier instances relative to some standard or usual signal. In this project, students will explore the definition of different kinds of anomalies existing in time series and investigate existing anomaly detection methods. Furthermore, students will evaluate the performance of these methods on large real-world time-series datasets, then identify the challenging issues and potential directions for further research.',
-    details: {
-      Deadline: 'Nov. 1, 2023',
-      Stipend: '0 INR',
-      Mode: 'Remote'
-    },
-    prerequisites: 'Basic knowledge of data mining techniques, familiarity with time-series data, and some experience with programming in Python or R is required. Knowledge of statistical methods for anomaly detection is a plus.',
-  },
-  universityLocation: 'University of Cambridge, Trumpington St, Cambridge CB2 1AG, United Kingdom...',
-  coordinates: [51.753867, 0.096450], // Coordinates for University of Cambridge
-};
 
 // Geocoder component to add a search control
 const GeocoderControl = () => {
@@ -85,12 +66,25 @@ const LocateControl = () => {
 };
 
 export default function ProjectDetails() {
+  const router = useRouter();
+  const { id } = router.query;
+  const [projectData, setProjectData] = useState(null);
   const [activeTab, setActiveTab] = useState('description');
   const [isExpanded, setIsExpanded] = useState(false);
+
+  useEffect(() => {
+    if (id) {
+      getProjectById(id)
+        .then(response => setProjectData(response.data))
+        .catch(error => console.error('Error fetching project data:', error));
+    }
+  }, [id]);
 
   const toggleReadMore = () => {
     setIsExpanded(!isExpanded);
   };
+
+  if (!projectData) return <p>Loading...</p>;
 
   return (
     <>
@@ -104,7 +98,7 @@ export default function ProjectDetails() {
         </div>
         <div className={styles.main}>
           <div className={styles.header} id="overview">
-            <img src="https://ircell.iitkgp.ac.in/media/George-Gilbert-Scott-Cambridge-St-Johns-College_zQtFT8P.webp" alt={projectData.title} className={styles.image} />
+            <img src={projectData.image} alt={projectData.title} className={styles.image} />
             <div className={styles.headerContent}>
               <h1 className={styles.mainHeading}>{projectData.university}</h1>
               <p><LocationOnIcon /> {projectData.location}</p>
