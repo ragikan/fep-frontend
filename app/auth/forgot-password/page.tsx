@@ -46,34 +46,9 @@ function SignUp() {
           sx={{ minHeight: "70vh" }}
           style={{width:"100%"}}
         >
-          {/* <FormControl sx={{ m: 1, width: "35ch" }} variant="outlined">
-            <h2>Welcome!</h2>
-            <h2>Sign up to</h2>
-            <Typography variant="subtitle1" color="text.secondary">
-              FTP
-            </Typography>
-          </FormControl> */}
-          <FormControl style={{width: "100%" }} variant="outlined">
-            <Tabs
-              centered
-              value={role}
-              onChange={handleRole}
-              textColor="inherit"
-              aria-label="full width tabs example"
-            >
-              <Tab label="Student" {...a11yProps(0)} />
-              <Tab label="Professor" {...a11yProps(1)} />
-            </Tabs>
-          </FormControl>
-          {role === 0 ? (
             <Suspense fallback={<CircularProgress />}>
               <SignUpStudent />
             </Suspense>
-          ) : (
-            <Suspense fallback={<CircularProgress />}>
-              <SignUpProf />
-            </Suspense>
-          )}
         </Stack>
       </Stack>
     </div>

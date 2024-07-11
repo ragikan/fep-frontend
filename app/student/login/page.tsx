@@ -1,12 +1,25 @@
 "use client"
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import { useRouter } from "next/navigation";
 import LoadingButton from '@mui/lab/LoadingButton'
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 import studentLoginRequest, {LoginStudentParams} from "../../../callbacks/auth/student/login";
 import '../../css/tailwind.css'
+import useStore from "../../../store/store";
 import { useForm } from "react-hook-form";
 export default function Home(){
+  const { setToken, setRole, setName, setRCName, setRcId, setUserID } =
+  useStore();
+  useEffect(() => {
+  setToken("");
+  setRole(0);
+  setName("");
+  setRCName("");
+  setRcId(0);
+  setUserID("");
+}, [setToken, setRole, setName, setRCName, setRcId, setUserID]);
+const router=useRouter();
   const [sevstatus,setsevstatus]=useState("success");
   const [OpenedSnack,SetOpen]=useState(false);
   const [user,setUser]=useState("");
@@ -16,21 +29,30 @@ export default function Home(){
   const {
     register:registerUser,
     handleSubmit:handleSubmit,
+    reset,
     formState: { errors }
   } = useForm<LoginStudentParams>();
   const sendUser = async (data: LoginStudentParams) => {
     data.user_id=user;
     data.password=password;
+    data.remember_me=true;
     setloadingstatus(true);
     const response = await studentLoginRequest.post(data);
-    console.log(response);
-    setsevstatus(response.request.status==200?"success":"error")
-    setMessage(response.request.status==200?response.data.status:"Wrong credentials");
+    if (response.token !== "") {
+      console.log(response);
+      setToken(response.token);
+      setRole(response.role_id);
+      reset({
+        user_id: "",
+        password: "",
+    });
+    router.push("/");
+    }
+    setsevstatus(response.token!==""?"success":"error")
+    setMessage(response.token!=""?"Logged In":"Wrong credentials");
     SetOpen(true);
     setloadingstatus(false);
-    if(response.request.status==200){
-      window.location.href="/";
-    }
+    console.log(response.token);
   };
     return (
         <>
