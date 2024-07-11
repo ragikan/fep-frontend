@@ -28,16 +28,23 @@ const Application = () => {
   }
 
   return (
-    <li className="flex justify-between gap-x-6 py-5 bg-gray-100 shadow-md rounded  px-4">
-      <div className="flex min-w-0 gap-x-4">
-        <p className="text-sm font-semibold leading-6 text-gray-900">
+    <div className="p-4 md:w-1/3 h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:scale-110 duration-500">
+      <img className="lg:h-48 md:h-36 w-full object-cover object-center" src="https://dummyimage.com/720x400" alt="course img"></img>
+      <div>
+        <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
           Applicant&apos;s Name: {applicant}
-        </p>
+        </h1>
         <p className="text-sm leading-6 text-gray-900">{proj}</p>
         <p className="mt-1 truncate text-xs leading-5 text-gray-500">
           SOP: {sop}
         </p>
       </div>
+      <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0" href="">More Details
+      <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14"></path>
+                  <path d="M12 5l7 7-7 7"></path>
+      </svg>
+      </a>
       <div className="space-x-2">
         <button
           onClick={accept}
@@ -58,7 +65,7 @@ const Application = () => {
           {onhold ? "On Hold" : "hold"}
         </button>
       </div>
-    </li>
+    </div>
   );
 };
 
@@ -68,16 +75,17 @@ const ApplicationReview = () => {
       <h1 className="md:text-3xl text-2xl font-medium title-font text-gray-900 text-center">
         APPLICATION REVIEW
       </h1>
-      <ul
+      <br/>
+      <section
         role="list"
-        className="divide-y divide-gray-100 border space-y-2 mx-2"
+        className="text-gray-600 body-font flex flex-wrap -m-4"
       >
         <Application />
         <Application />
         <Application />
         <Application />
         <Application />
-      </ul>
+      </section>
     </>
   );
 };
