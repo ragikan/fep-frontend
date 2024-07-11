@@ -1,7 +1,9 @@
 // page.tsx
 "use client";
-
-import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import React, { useEffect,useState } from "react";
+import whoami from "../callbacks/auth/student/whoami";
+import useStore from "../store/store";
 import {
   AppBar,
   Toolbar,
@@ -37,10 +39,36 @@ import styles from "./page.module.css";
 import Link from "next/link";
 import About from "@/components/About";
 import Team from "@/components/Team";
-
+import LogoutIcon from '@mui/icons-material/Logout';
 const Page = () => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
-
+  const [drawerOpen,setDrawerOpen]=useState(false);
+  const router = useRouter();
+  const { token, setToken } = useStore();
+  useEffect(() => {
+    const checklogin = async () => {
+      if (!token) {
+        return;
+      }
+      const res = await whoami.get(token);
+      switch (res.role_id) {
+        case 1:
+          break;
+        case 2:
+          break;
+        case 100:
+          break;
+        case 101:
+          break;
+        case 102:
+          break;
+        case 103:
+          break;
+        default:
+          setToken("");
+      }
+    };
+    checklogin();
+  }, [router, setToken, token]);
   const toggleDrawer = (open: boolean) => () => {
     setDrawerOpen(open);
   };
@@ -75,11 +103,18 @@ const Page = () => {
           <Typography variant="h6">FTP</Typography>
           <div className={styles.navLinks}>
             {navLinks}
+            {token==""?
             <Link href="/auth/login">
               <Button color="inherit" startIcon={<LoginIcon />}>
                 SIGN IN
               </Button>
-            </Link>
+            </Link>:
+            <>
+              <Button color="inherit" startIcon={<LogoutIcon />} onClick={()=>{setToken("");router.push("/");}}>
+                Logout
+              </Button>
+            </>
+            }
           </div>
           <IconButton
             edge="end"

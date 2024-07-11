@@ -3,12 +3,17 @@ import {
   STUDENT_AUTH_URL,
   ErrorType,
   SERVER_ERROR,
-  StatusResponse,
+  StatusResponse,responseBody
 } from "../../constants";
 export interface LoginStudentParams {
   user_id: string;
   password:string;
   remember_me:boolean;
+}
+export interface LoginResponse {
+  token: string;
+  role_id: number;
+  user_id: string;
 }
 const authInstance = axios.create({
   baseURL: STUDENT_AUTH_URL,
@@ -18,17 +23,15 @@ const authInstance = axios.create({
 });
 const studentLoginRequest = {
   post: (body: LoginStudentParams) =>
-    authInstance
-      .post<
-        StatusResponse,
-        AxiosResponse<StatusResponse, LoginStudentParams>,
-        LoginStudentParams
-      >("/api/auth/login", body)
-      .then((res) => {
-        return res;
-      })
-      .catch((err: ErrorType) => {
-        return err;
-      }),
+  authInstance
+    .post<
+      LoginResponse,
+      AxiosResponse<LoginResponse, LoginStudentParams>,
+      LoginStudentParams
+    >("/api/auth/login", body)
+    .then(responseBody)
+    .catch((err: ErrorType) => {
+      return { user_id: "", token: "", role_id: 0 } as LoginResponse;
+    }),
 };
 export default studentLoginRequest;
