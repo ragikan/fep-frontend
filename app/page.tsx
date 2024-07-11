@@ -75,7 +75,7 @@ const Page = () => {
           <Typography variant="h6">FTP</Typography>
           <div className={styles.navLinks}>
             {navLinks}
-            <Link href="/student/login">
+            <Link href="/auth/login">
               <Button color="inherit" startIcon={<LoginIcon />}>
                 SIGN IN
               </Button>
