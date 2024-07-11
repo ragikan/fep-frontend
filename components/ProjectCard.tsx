@@ -1,3 +1,4 @@
+// components/ProjectCard.js
 "use client";
 import { useState } from 'react';
 import Link from 'next/link';
@@ -25,22 +26,22 @@ export default function ProjectCard({ project }) {
       <CardMedia
         component="img"
         height="140"
-        image={project.image}
-        alt={project.title}
+        image={project.image || '/default-image.jpg'} // Add a default image if none is provided
+        alt={project.project_name}
         className={styles.cardMedia}
       />
       <CardContent className={styles.cardContent}>
         <Typography gutterBottom variant="h5" component="div">
-          {project.title}
+          {project.project_name}
         </Typography>
         <Typography variant="body2" color="textSecondary">
-          {project.institution}
+          {project.university_name}
         </Typography>
         <Typography variant="body2" color="textSecondary">
-          Project Mode: {project.mode}
+          Project Mode: {project.project_mode}
         </Typography>
         <Typography variant="body2" color="textSecondary">
-          Deadline: {project.deadline}
+          Deadline: {new Date(project.application_deadline).toLocaleDateString()}
         </Typography>
       </CardContent>
       <div className={styles.bookmarkIcon}>
@@ -52,7 +53,7 @@ export default function ProjectCard({ project }) {
       </div>
       <div className={styles.cardOverlay}>
         <Typography variant="body2" className={styles.cardDescription}>
-          {project.description}
+          {project.project_details}
         </Typography>
         <Link href={`/${project.id}`} passHref>
           <Button size="small" variant="contained" className={styles.readMoreButton}>
