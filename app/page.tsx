@@ -1,312 +1,328 @@
-// page.tsx
-"use client";
-import { useRouter } from "next/navigation";
-import React, { useEffect,useState } from "react";
-import whoami from "../callbacks/auth/student/whoami";
-import useStore from "../store/store";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  Box,
-  Container,
-  IconButton,
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  TextField,
-  Card,
-  CardContent,
-  CardActions,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
-import HomeIcon from "@mui/icons-material/Home";
-import InfoIcon from "@mui/icons-material/Info";
-import HelpIcon from "@mui/icons-material/Help";
-import PeopleIcon from "@mui/icons-material/People";
-import StarIcon from "@mui/icons-material/Star";
-import ContactMailIcon from "@mui/icons-material/ContactMail";
-import LoginIcon from "@mui/icons-material/Login";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import styles from "./page.module.css";
-import Link from "next/link";
-import About from "@/components/About";
-import Team from "@/components/Team";
-import LogoutIcon from '@mui/icons-material/Logout';
-const Page = () => {
-  const [drawerOpen,setDrawerOpen]=useState(false);
-  const router = useRouter();
-  const { token, setToken } = useStore();
-  useEffect(() => {
-    const checklogin = async () => {
-      if (!token) {
-        return;
-      }
-      const res = await whoami.get(token);
-      switch (res.role_id) {
-        case 1:
-          break;
-        case 2:
-          break;
-        case 100:
-          break;
-        case 101:
-          break;
-        case 102:
-          break;
-        case 103:
-          break;
-        default:
-          setToken("");
-      }
-    };
-    checklogin();
-  }, [router, setToken, token]);
-  const toggleDrawer = (open: boolean) => () => {
-    setDrawerOpen(open);
-  };
+import React, { useEffect, useState } from 'react';
+import './App.css';
+import Faq from './faq';
+import logo from './iitklogo.png'; 
+import contactus from './contactus';
+import team from './team';
+import Navbar from './Navbar'; // Adjust the import path based on your directory structure
 
-  const navLinks = (
-    <>
-      <Button href="" color="inherit">
-        <HomeIcon /> HOME
-      </Button>
-      <Button href="#aboutus" color="inherit">
-        <InfoIcon /> ABOUT US
-      </Button>
-      <Button href="#faq" color="inherit">
-        <HelpIcon /> F.A.Q
-      </Button>
-      <Button href="#team" color="inherit">
-        <PeopleIcon /> TEAM
-      </Button>
-      <Button href="#testimonials" color="inherit">
-        <StarIcon /> TESTIMONIALS
-      </Button>
-      <Button href="#contactus" color="inherit">
-        <ContactMailIcon /> CONTACT US
-      </Button>
-    </>
-  );
-
+const App: React.FC = () => {
   return (
-    <div className={styles.root}>
-      <AppBar position="fixed" className={styles.appBar}>
-        <Toolbar className={styles.toolbar}>
-          <Typography variant="h6">FTP</Typography>
-          <div className={styles.navLinks}>
-            {navLinks}
-            {token==""?
-            <Link href="/auth/login">
-              <Button color="inherit" startIcon={<LoginIcon />}>
-                SIGN IN
-              </Button>
-            </Link>:
-            <>
-              <Button color="inherit" startIcon={<LogoutIcon />} onClick={()=>{setToken("");router.push("/");}}>
-                Logout
-              </Button>
-            </>
-            }
-          </div>
-          <IconButton
-            edge="end"
-            className={styles.menuButton}
-            color="inherit"
-            aria-label="menu"
-            onClick={toggleDrawer(true)}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
+    <div>
+      {/* <Navbar /> */}
+      <Header />
+      <HeroSection />
+      <About />
+      <ExpertiseSection />
 
-      <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
-        <Box
-          className={styles.drawerContent}
-          role="presentation"
-          onClick={toggleDrawer(false)}
-          onKeyDown={toggleDrawer(false)}
-        >
-          <div className={styles.drawerHeader}>
-            <IconButton
-              edge="end"
-              color="inherit"
-              aria-label="close"
-              onClick={toggleDrawer(false)}
-            >
-              <CloseIcon />
-            </IconButton>
-          </div>
-          <List>
-            <ListItem button component="a" href="#home">
-              <ListItemIcon>
-                <HomeIcon />
-              </ListItemIcon>
-              <ListItemText primary="HOME" />
-            </ListItem>
-            <ListItem button component="a" href="#aboutus">
-              <ListItemIcon>
-                <InfoIcon />
-              </ListItemIcon>
-              <ListItemText primary="ABOUT US" />
-            </ListItem>
-            <ListItem button component="a" href="#faq">
-              <ListItemIcon>
-                <HelpIcon />
-              </ListItemIcon>
-              <ListItemText primary="F.A.Q" />
-            </ListItem>
-            <ListItem button component="a" href="#team">
-              <ListItemIcon>
-                <PeopleIcon />
-              </ListItemIcon>
-              <ListItemText primary="TEAM" />
-            </ListItem>
-            <ListItem button component="a" href="#testimonials">
-              <ListItemIcon>
-                <StarIcon />
-              </ListItemIcon>
-              <ListItemText primary="TESTIMONIALS" />
-            </ListItem>
-            <ListItem button component="a" href="#contactus">
-              <ListItemIcon>
-                <ContactMailIcon />
-              </ListItemIcon>
-              <ListItemText primary="CONTACT US" />
-            </ListItem>
-            <ListItem button component="a" href="/signin">
-              <ListItemIcon>
-                <LoginIcon />
-              </ListItemIcon>
-              <ListItemText primary="SIGN IN" />
-            </ListItem>
-          </List>
-        </Box>
-      </Drawer>
-
-      <div className={styles.header}>
-        <Typography variant="h1" className={styles.tj1}>
-          Foreign Training Program
-        </Typography>
-        <Typography variant="h5" className={styles.subtitle}>
-          Your Gateway to Global Excellence
-        </Typography>
-        <Typography variant="body1" className={styles.tj2}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem,
-          perspiciatis sed veritatis maxime quas, deleniti reprehenderit porro
-          voluptatibus quis ut tenetur, vero ipsa dolore rem. Et tempore officia
-          inventore rerum.
-        </Typography>
-        <center>
-          <Button variant="contained" className={styles.button}>
-            <strong>Apply Now</strong>
-          </Button>
-        </center>
-      </div>
-
-      <Container className={styles.content}>
-        <div id="aboutus" className={styles.section}>
-          <Typography variant="h4" className={styles.sectionHeading}>
-            About Us
-          </Typography>
-          <About />
-
-          {/* <Typography variant="body1" className={styles.sectionContent}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor consequat urna.
-          </Typography> */}
-        </div>
-        <div id="faq" className={styles.section}>
-          <Typography variant="h4" className={styles.sectionHeading}>
-            F.A.Q
-          </Typography>
-          {Array.from({ length: 5 }).map((_, index) => (
-            <Accordion key={index} className={styles.accordion}>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                className={styles.accordionSummary}
-              >
-                <Typography>Question {index + 1}</Typography>
-              </AccordionSummary>
-              <AccordionDetails className={styles.accordionDetails}>
-                <Typography>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                  eget.
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-          ))}
-        </div>
-        <div id="team" className={styles.section}>
-          <Typography variant="h4" className={styles.sectionHeading}>
-            Team
-          </Typography>
-          <Team />
-        </div>
-        <div id="testimonials" className={styles.section}>
-          <Typography variant="h4" className={styles.sectionHeading}>
-            Testimonials
-          </Typography>
-          <Typography variant="body1" className={styles.sectionContent}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-            nisl eros, pulvinar facilisis justo mollis, auctor consequat urna.
-          </Typography>
-        </div>
-        <div id="contactus" className={styles.section}>
-          <Typography variant="h4" className={styles.sectionHeading}>
-            Contact Us
-          </Typography>
-          <Card className={styles.contactCard}>
-            <CardContent>
-              <TextField
-                label="Name"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                className={styles.textField}
-              />
-              <TextField
-                label="Email"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                className={styles.textField}
-              />
-              <TextField
-                label="Subject"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                className={styles.textField}
-              />
-              <TextField
-                label="Message"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                multiline
-                rows={4}
-                InputProps={{ className: styles.messageField }}
-              />
-            </CardContent>
-            <CardActions>
-              <Button variant="contained" color="primary">
-                Submit
-              </Button>
-            </CardActions>
-          </Card>
-        </div>
-      </Container>
+      {/* <Programs /> */}
+      <Faq />
+      <team/>
+      <contactus/> {/* Add the FAQ component here */}
+      <Footer />
     </div>
   );
 };
 
-export default Page;
+const Header: React.FC = () => {
+  return (
+    <nav className="navbar">
+      <div className="navbar-left">
+        <img src={logo} alt="IIT Kanpur Logo" className="navbar-logo" />
+        <span className="navbar-title">IIT Kanpur</span>
+      </div>
+      <ul className="navbar-links">
+        <li className="navbar-link">HOME</li>
+        <li className="navbar-link">ABOUT</li>
+        <li className="navbar-link">EXPERTIESE</li>
+        <li className="navbar-link">FAQ</li>
+        <li className="navbar-link">TEAM</li>
+        <li className="navbar-link">CONTACT</li>
+      </ul>
+      <div className="navbar-right">
+        <button className="sign-in-button">Sign In</button>
+      </div>
+    </nav>
+  );
+};
+
+interface Testimonial {
+  id: number;
+  name: string;
+  text: string;
+  image: string;
+}
+
+const Testimonials: React.FC = () => {
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+
+  const testimonials: Testimonial[] = [
+    {
+      id: 1,
+      name: "John Doe",
+      text: "This program was a life-changing experience.",
+      image: "https://via.placeholder.com/80"
+    },
+    {
+      id: 2,
+      name: "Jane Smith",
+      text: "I learned so much about different cultures.",
+      image: "https://via.placeholder.com/80"
+    },
+    {
+      id: 3,
+      name: "Alice Johnson",
+      text: "An amazing opportunity to grow both personally and professionally.",
+      image: "https://via.placeholder.com/80"
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex(prevIndex => (prevIndex + 1) % testimonials.length);
+    }, 10000); // Change testimonial every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
+
+  return (
+    <section id="testimonials" className="testimonials-section">
+      {/* <h2>Testimonials</h2> */}
+      <div className="testimonial-container">
+        {testimonials.map((testimonial, index) => (
+          <div
+            key={testimonial.id}
+            className={`testimonial-card ${index === activeIndex ? 'active' : ''}`}
+          >
+            <img src={testimonial.image} alt={testimonial.name} />
+            <p>{testimonial.text}</p>
+            <h3>{testimonial.name}</h3>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+const HeroSection: React.FC = () => {
+  useEffect(() => {
+    const textContainer = document.querySelector('.animated-text');
+    const texts = ["to provide international exposure."];
+    let textIndex = 0;
+    let charIndex = 0;
+    let currentText = '';
+    let isDeleting = false;
+    let isRewriting = false;
+    let deleteStartIndex = 0;
+
+    function type() {
+      const currentString = texts[textIndex];
+      const words = currentString.split(' ');
+
+      if (!isDeleting && !isRewriting) {
+        if (charIndex < currentString.length) {
+          currentText += currentString.charAt(charIndex);
+          charIndex++;
+          textContainer.textContent = currentText;
+          setTimeout(type, 100);
+        } else {
+          isDeleting = true;
+          deleteStartIndex = currentText.lastIndexOf(words.slice(-3).join(' '));
+          setTimeout(type, 2000);
+        }
+      } else if (isDeleting && !isRewriting) {
+        if (currentText.length > deleteStartIndex) {
+          currentText = currentText.slice(0, -1);
+          textContainer.textContent = currentText;
+          setTimeout(type, 50);
+        } else {
+          isRewriting = true;
+          charIndex = deleteStartIndex;
+          setTimeout(type, 1000);
+        }
+      } else if (isRewriting) {
+        if (charIndex < currentString.length) {
+          currentText += currentString.charAt(charIndex);
+          charIndex++;
+          textContainer.textContent = currentText;
+          setTimeout(type, 100);
+        } else {
+          isDeleting = false;
+          isRewriting = false;
+          textIndex = (textIndex + 1) % texts.length;
+          currentText = '';
+          charIndex = 0;
+          setTimeout(type, 2000);
+        }
+      }
+    }
+
+    type();
+
+    const handleScroll = () => {
+      const heroSection = document.querySelector('#hero');
+      const scrollPosition = window.pageYOffset;
+      heroSection.style.backgroundPositionY = `${-scrollPosition * 0.5}px`; // Adjust the factor for the desired smoothness
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  return (
+    <section id="hero">
+      <div className="hero-content">
+        <h1>Welcome to the Foreign Exposure Program</h1>
+        <div className='hero-explore'>
+          Explore new opportunities and expand your horizons with our unique programs designed
+        </div>
+        <div className="animated-text"></div>
+        <button className="btn">Apply now</button>
+      </div>
+      <Testimonials />
+    </section>
+  );
+};
+
+const About: React.FC = () => {
+  return (
+    <section id="about">
+      <div style={{ textAlign: 'center' }}>
+        <img src="map.png" alt="Map Image" style={{ maxWidth: '100%', maxHeight: '110px' }} />
+      </div>
+      <h2 style={{ fontSize: '2.5rem' }}>About Us</h2>
+      <p className="about-description">
+        The Foreign Exposure Program is dedicated to offering comprehensive international experiences that enrich personal and professional growth. Our programs are crafted to provide immersive exposure to different cultures, industries, and educational systems.
+      </p>
+    </section>
+  );
+};
+
+const ExpertiseSection: React.FC = () => {
+  useEffect(() => {
+    const textContainer2 = document.querySelector('.animated-text2');
+    const texts2 = [
+      "academics and its unparalleled faculty."
+    ];
+    let textIndex2 = 0;
+    let charIndex2 = 0;
+    let currentText2 = '';
+    let isDeleting2 = false;
+    let isRewriting2 = false;
+    let deleteStartIndex2 = 0;
+
+    function type2() {
+      const currentString2 = texts2[textIndex2];
+      const words2 = currentString2.split(' ');
+
+      if (!isDeleting2 && !isRewriting2) {
+        if (charIndex2 < currentString2.length) {
+          currentText2 += currentString2.charAt(charIndex2);
+          charIndex2++;
+          textContainer2.textContent = currentText2;
+          setTimeout(type2, 100);
+        } else {
+          isDeleting2 = true;
+          deleteStartIndex2 = currentText2.lastIndexOf(words2.slice(-3).join(' '));
+          setTimeout(type2, 2000);
+        }
+      } else if (isDeleting2 && !isRewriting2) {
+        if (currentText2.length > deleteStartIndex2) {
+          currentText2 = currentText2.slice(0, -1);
+          textContainer2.textContent = currentText2;
+          setTimeout(type2, 50);
+        } else {
+          isRewriting2 = true;
+          charIndex2 = deleteStartIndex2;
+          setTimeout(type2, 1000);
+        }
+      } else if (isRewriting2) {
+        if (charIndex2 < currentString2.length) {
+          currentText2 += currentString2.charAt(charIndex2);
+          charIndex2++;
+          textContainer2.textContent = currentText2;
+          setTimeout(type2, 100);
+        } else {
+          isDeleting2 = false;
+          isRewriting2 = false;
+          textIndex2 = (textIndex2 + 1) % texts2.length;
+          currentText2 = '';
+          charIndex2 = 0;
+          setTimeout(type2, 2000);
+        }
+      }
+    }
+
+    type2();
+  }, []);
+
+  return (
+    <section id="expertise-section">
+      <div className="content">
+        <div className="intro-text">
+          <p><h2>Our Expertise:</h2> IIT Kanpur has 14 Undergraduate departments and 15 Postgraduate departments, each having a great talent pool honed to suit the needs of academia by our excellent</p>
+          <p className="animated-text2"></p></div>
+        <div className="departments">
+          <p>The departments are:</p>
+          <ul>
+            <li>Aerospace Engineering</li>
+            <li>Biological Sciences and Bioengineering</li>
+            <li>Chemical Engineering</li>
+            <li>Chemistry</li>
+            <li>Civil Engineering</li>
+            <li>Cognitive Sciences</li>
+            <li>Computer Science and Engineering</li>
+            <li>Desgin </li>
+            <li>Earth Sciences</li>
+            <li>Economics</li>
+            <li>Electrical Engineering</li>
+            <li>Material Science and Engineering</li>
+            <li>Mathematics and Scientific Computing</li>
+            <li>Mechanical Engineering</li>
+            <li>Mba</li>
+            <li>Physics</li>
+            <li>Statistics and Data Science</li>
+            <li>Nuclear Engineering and Technology</li>
+            <li>Photonics Science and Engineering</li>
+            <li>Sustainable Energy Engineering</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Programs: React.FC = () => {
+  return (
+    <section id="programs">
+      <h2>Our Programs</h2>
+      <div className="programs-container">
+        <div className="program">
+          <h3>Program One</h3>
+          <p>An immersive cultural experience in Europe, exploring historical landmarks and contemporary innovations.</p>
+        </div>
+        <div className="program">
+          <h3>Program Two</h3>
+          <p>A professional development program in Asia, focusing on industry-specific training and networking opportunities.</p>
+        </div>
+        <div className="program">
+          <h3>Program Three</h3>
+          <p>An educational tour in North America, visiting leading universities and participating in academic exchanges.</p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Footer: React.FC = () => {
+  return (
+    <footer>
+      <p>&copy; 2024 Foreign Exposure Program. All rights reserved.</p>
+    </footer>
+  );
+};
+
+export default App;
