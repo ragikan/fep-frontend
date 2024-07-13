@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Faq from './faq';
+import team from './faq';
 import logo from './iitklogo.png'; 
 import contactus from './contactus';
-import team from './team';
+import Faq from './team';
 
 const App: React.FC = () => {
   return (
