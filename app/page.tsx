@@ -3,6 +3,7 @@ import './App.css';
 import team from './faq';
 import logo from './iitklogo.png'; 
 import contactus from './contactus';
+import Statistics from './Statistics';
 import Faq from './team';
 
 const App: React.FC = () => {
@@ -12,6 +13,7 @@ const App: React.FC = () => {
       <Header />
       <HeroSection />
       <About />
+      <Statistics />
       <ExpertiseSection />
 
       {/* <Programs /> */}
