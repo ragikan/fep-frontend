@@ -48,4 +48,4 @@ const team: React.FC<FaqProps> = (props) => {
     );
 }
 
-export default Faq;
+export default team;
