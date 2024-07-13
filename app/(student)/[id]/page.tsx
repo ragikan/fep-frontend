@@ -1,4 +1,3 @@
-// app/(student)/[id]/page.tsx
 "use client";
 
 import { useEffect, useState } from 'react';
@@ -13,12 +12,12 @@ import ApartmentIcon from '@mui/icons-material/Apartment';
 import BookmarksOutlinedIcon from '@mui/icons-material/BookmarksOutlined';
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import ChatBubbleOutlineRoundedIcon from '@mui/icons-material/ChatBubbleOutlineRounded';
-import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents, LayersControl, ZoomControl } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, LayersControl, ZoomControl, useMap, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import 'leaflet-control-geocoder';
-import { useRouter } from 'next/router';
 import { getProjectById } from '@/components/api'; // Import the getProjectById function
+import { Project } from '@/models/projects'; // Import the Project model
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -65,10 +64,9 @@ const LocateControl = () => {
   );
 };
 
-export default function ProjectDetails() {
-  const router = useRouter();
-  const { id } = router.query;
-  const [projectData, setProjectData] = useState(null);
+export default function ProjectDetails({ params }: { params: { id: string } }) {
+  const { id } = params;
+  const [projectData, setProjectData] = useState<Project | null>(null);
   const [activeTab, setActiveTab] = useState('description');
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -88,7 +86,7 @@ export default function ProjectDetails() {
 
   return (
     <>
-      <h2 className={styles.Heading}>{projectData.title}</h2>
+      <h2 className={styles.Heading}>{projectData.project_name}</h2>
       <div className={styles.container}>
         <div className={styles.sidebar}>
           <a href="#overview" className={styles.link}>Overview</a><br />
@@ -98,10 +96,10 @@ export default function ProjectDetails() {
         </div>
         <div className={styles.main}>
           <div className={styles.header} id="overview">
-            <img src={projectData.image} alt={projectData.title} className={styles.image} />
+            <img src={projectData.image} alt={projectData.project_name} className={styles.image} />
             <div className={styles.headerContent}>
-              <h1 className={styles.mainHeading}>{projectData.university}</h1>
-              <p><LocationOnIcon /> {projectData.location}</p>
+              <h1 className={styles.mainHeading}>{projectData.university_name}</h1>
+              <p><LocationOnIcon /> {projectData.university_location}</p>
               <div className={styles.buttons}>
                 <button className={styles.buttonDisabled}><ChatBubbleOutlineRoundedIcon /> Already Applied</button>
                 <Link href="/results" className={styles.button}><SchoolOutlinedIcon /> Shortlisted</Link>
@@ -110,9 +108,9 @@ export default function ProjectDetails() {
             </div>
           </div>
           <div className={styles.content}>
-            <h2 className={styles.subHeading}>{projectData.university}</h2>
+            <h2 className={styles.subHeading}>{projectData.university_name}</h2>
             <p>
-              {isExpanded ? projectData.UniversityDescription : `${projectData.UniversityDescription.substring(0, 100)}...`}
+              {isExpanded ? projectData.universityDescription : `${projectData.universityDescription.substring(0, 100)}...`}
               <button onClick={toggleReadMore} className={styles.readMoreButton}>
                 {isExpanded ? 'Read Less' : 'Read More'}
               </button>
@@ -122,7 +120,7 @@ export default function ProjectDetails() {
               <div className={styles.otherInfoTab}>
                 <FontAwesomeIcon icon={faTrophy} className={styles.trophyIcon} />
                 <span>QS World University Rankings</span>
-                <p>{projectData.otherInformation.ranking}</p>
+                <p>{projectData.ranking}</p>
               </div>
             </div>
             <h3 id="projectDetails" className={styles.subHeading}>Project Details</h3>
@@ -144,19 +142,19 @@ export default function ProjectDetails() {
               <div className={styles.tabContent} key={activeTab}>
                 {activeTab === 'description' ? (
                   <>
-                    <p>{projectData.projectDetails.description}</p>
+                    <p>{projectData.project_details}</p>
                     <h3 id="otherInformation" className={styles.subHeading}>Details:</h3>
-                    <span><AccessTimeIcon /> Deadline: {projectData.projectDetails.details.Deadline}</span><br />
-                    <span><SavingsIcon /> Stipend: {projectData.projectDetails.details.Stipend}</span><br />
-                    <span><ApartmentIcon /> Mode: {projectData.projectDetails.details.Mode}</span>
+                    <span><AccessTimeIcon /> Deadline: {projectData.application_deadline}</span><br />
+                    <span><SavingsIcon /> Stipend: {projectData.stipend}</span><br />
+                    <span><ApartmentIcon /> Mode: {projectData.project_mode}</span>
                   </>
                 ) : (
-                  <p>{projectData.projectDetails.prerequisites}</p>
+                  <p>{projectData.eligibility}</p>
                 )}
               </div>
             </div>
             <h3 id="universityLocation" className={styles.subHeading}>University Location</h3>
-            <p>{projectData.universityLocation}</p>
+            <p>{projectData.university_location}</p>
             <MapContainer center={projectData.coordinates} zoom={13} style={{ height: '400px', width: '100%' }} zoomControl={false}>
               <LayersControl position="topright">
                 <LayersControl.BaseLayer checked name="Street View">
@@ -173,7 +171,7 @@ export default function ProjectDetails() {
                 </LayersControl.BaseLayer>
               </LayersControl>
               <Marker position={projectData.coordinates}>
-                <Popup>{projectData.university}</Popup>
+                <Popup>{projectData.university_name}</Popup>
               </Marker>
               <LocateControl />
               <ZoomControl position="bottomright" />

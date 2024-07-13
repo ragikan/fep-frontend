@@ -9,9 +9,11 @@ import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
+import Grid from '@mui/material/Grid'; // Import Grid component
 import ProjectCard from '@/components/ProjectCard'; 
 import styles from './applications.module.css';
 import { getAllProjects } from '@/components/api'; // Import the getAllProjects function
+import { Project } from '@/models/projects';
 
 const style = {
   position: 'absolute',
@@ -24,9 +26,9 @@ const style = {
   p: 4,
 };
 
-export default function Projects() {
+const Projects = () => {
   const [open, setOpen] = useState(false);
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState<Project[]>([]); // Use the Project model for type safety
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -92,12 +94,16 @@ export default function Projects() {
             </Box>
           </Box>
         </Modal>
-        <div className={styles.projectList}>
+        <Grid container spacing={3} className={styles.projectList}>
           {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <Grid item xs={12} sm={6} md={4} key={project.ID}>
+              <ProjectCard project={project} />
+            </Grid>
           ))}
-        </div>
+        </Grid>
       </main>
     </div>
   );
 }
+
+export default Projects;
