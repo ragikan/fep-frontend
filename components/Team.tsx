@@ -28,7 +28,7 @@ const teamMembers: TeamMember[] = [
 const Team: React.FC = () => {
   return (
     <div className="team-box">
-      <h2>Meet Our Team</h2>
+      <h2>Developed By</h2>
       <div className="team-container">
         {teamMembers.map((member, index) => (
           <div className="team-member" key={index}>
