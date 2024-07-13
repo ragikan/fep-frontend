@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Faq from './faq';
+import team from './faq';
 import logo from './iitklogo.png'; 
 import contactus from './contactus';
-import team from './team';
-import Navbar from './Navbar'; // Adjust the import path based on your directory structure
+import Statistics from './Statistics';
+import Faq from './team';
 
 const App: React.FC = () => {
   return (
@@ -13,12 +13,13 @@ const App: React.FC = () => {
       <Header />
       <HeroSection />
       <About />
+      <Statistics />
       <ExpertiseSection />
 
       {/* <Programs /> */}
       <Faq />
       <team/>
-      <contactus/> {/* Add the FAQ component here */}
+      <contactus/> 
       <Footer />
     </div>
   );
