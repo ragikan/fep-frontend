@@ -1,53 +1,188 @@
-import React from 'react';
-import { FaLinkedin, FaFacebook, FaGithub } from 'react-icons/fa';
-import './Team.css';
+import React from 'react'
+import styles from "../components/team.module.css"
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
-interface TeamMember {
-  name: string;
-  photo: string;
-  linkedIn: string;
-  facebook: string;
-  github: string;
-  contact: string;
-  email: string;
+function Team() {
+
+    return (
+        <>
+            <body className={styles.bod}>
+                <header className={styles.header}>
+                    <h1 className={styles.heading}>Developed By</h1>
+                </header>
+
+                <section className={styles.teamSection}>
+                    <img className={styles.video} src="world.jpg" >  
+                    
+                    </img>
+                    <div className={styles.teamMember}>
+                        <div className={styles.memberAvatar}>
+                            <img src="oggy.png" className={styles.memberAvatar} />
+                        </div>
+                        <div className={styles.iconContainer}>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faFacebook} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faInstagram} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faLinkedin} /></a>
+                        </div>
+
+                        <div className={styles.memberInfo}>
+                            <h3>Oggy Cat</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+
+                    <div className={styles.teamMember}>
+                        <div className={styles.memberAvatar}>
+                            <img src="oggy.png" className={styles.memberAvatar} />
+                        </div>
+                        <div className={styles.iconContainer}>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faFacebook} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faInstagram} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faLinkedin} /></a>
+                        </div>
+                        <div className={styles.memberInfo}>
+                            <h3>Jane Smith</h3>
+                            <p>Phasellus tristique nunc et magna fermentum.</p>
+                        </div>
+                    </div>
+                    <div className={styles.teamMember}>
+                        <div className={styles.memberAvatar}>
+                            <img src="oggy.png" className={styles.memberAvatar} />
+                        </div>
+                        <div className={styles.iconContainer}>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faFacebook} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faInstagram} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faLinkedin} /></a>
+                        </div>
+                        <div className={styles.memberInfo}>
+                            <h3>Mike Johnson</h3>
+                            <p>Etiam vitae massa eget odio feugiat pretium.</p>
+                        </div>
+                    </div>
+                    <div className={styles.teamMember}>
+                        <div className={styles.memberAvatar}>
+                            <img src="oggy.png" className={styles.memberAvatar} />
+                        </div>
+                        <div className={styles.iconContainer}>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faFacebook} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faInstagram} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faLinkedin} /></a>
+                        </div>
+                        <div className={styles.memberInfo}>
+                            <h3>Emily Davis</h3>
+                            <p>Mauris tempus, eros et condimentum.</p>
+                        </div>
+                    </div>
+                    <div className={styles.teamMember}>
+                        <div className={styles.memberAvatar}>
+                            <img src="oggy.png" className={styles.memberAvatar} />
+                        </div>
+                        <div className={styles.iconContainer}>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faFacebook} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faInstagram} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faLinkedin} /></a>
+                        </div>
+                        <div className={styles.memberInfo}>
+                            <h3>Chris Lee</h3>
+                            <p>Pellentesque habitant morbi tristique senectus.</p>
+                        </div>
+                    </div>
+                    <div className={styles.teamMember}>
+                        <div className={styles.memberAvatar}>
+                            <img src="oggy.png" className={styles.memberAvatar} />
+                        </div>
+                        <div className={styles.iconContainer}>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faFacebook} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faInstagram} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faLinkedin} /></a>
+                        </div>
+                        <div className={styles.memberInfo}>
+                            <h3>Sara Wilson</h3>
+                            <p>Vivamus tincidunt velit sit amet velit posuere.</p>
+                        </div>
+                    </div>
+                    <div className={styles.teamMember}>
+                        <div className={styles.memberAvatar}>
+                            <img src="oggy.png" className={styles.memberAvatar} />
+                        </div>
+                        <div className={styles.iconContainer}>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faFacebook} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faInstagram} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faLinkedin} /></a>
+                        </div>
+                        <div className={styles.memberInfo}>
+                            <h3>David Brown</h3>
+                            <p>Fusce vel arcu eget urna consequat fringilla.</p>
+                        </div>
+                    </div>
+                    <div className={styles.teamMember}>
+                        <div className={styles.memberAvatar}></div>
+                        <div className={styles.iconContainer}>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faFacebook} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faInstagram} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faLinkedin} /></a>
+                        </div>
+                        <div className={styles.memberInfo}>
+                            <h3>Linda White</h3>
+                            <p>Aenean pharetra ligula non tortor sollicitudin.</p>
+                        </div>
+                    </div>
+                    <div className={styles.teamMember}>
+                        <div className={styles.memberAvatar}></div>
+                        <div className={styles.iconContainer}>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faFacebook} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faInstagram} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faLinkedin} /></a>
+                        </div>
+                        <div className={styles.memberInfo}>
+                            <h3>Robert Green</h3>
+                            <p>In hac habitasse platea dictumst.</p>
+                        </div>
+                    </div>
+                    <div className={styles.teamMember}>
+                        <div className={styles.memberAvatar}></div>
+                        <div className={styles.iconContainer}>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faFacebook} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faInstagram} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faLinkedin} /></a>
+                        </div>
+                        <div className={styles.memberInfo}>
+                            <h3>Jessica Black</h3>
+                            <p>Integer luctus mauris sit amet odio egestas.</p>
+                        </div>
+                    </div>
+                    <div className={styles.teamMember}>
+                        <div className={styles.memberAvatar}></div>
+                        <div className={styles.iconContainer}>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faFacebook} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faInstagram} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faLinkedin} /></a>
+                        </div>
+                        <div className={styles.memberInfo}>
+                            <h3>Daniel King</h3>
+                            <p>Aliquam erat volutpat. Nulla facilisi.</p>
+                        </div>
+                    </div>
+                    <div className={styles.teamMember}>
+                        <div className={styles.memberAvatar}></div>
+                        <div className={styles.iconContainer}>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faFacebook} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faInstagram} /></a>
+                            <a href="#" target="_blank" className={styles.icon}><FontAwesomeIcon icon={faLinkedin} /></a>
+                        </div>
+                        <div className={styles.memberInfo}>
+                            <h3>Amy Turner</h3>
+                            <p>Donec ut magna nec metus laoreet.</p>
+                        </div>
+                    </div>
+                   
+                </section>
+            </body>
+        </>
+    )
 }
 
-const teamMembers: TeamMember[] = [
-  {
-    name: 'ABCD',
-    photo: 'https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/35af6a41332353.57a1ce913e889.jpg',
-    linkedIn: 'https://www.linkedin.com/in/member1',
-    facebook: 'https://www.facebook.com/member1',
-    github: 'https://www.github.com/member1',
-    contact: '1234567890',
-    email: 'abcd32@iitk.ac.in'
-  },
-  // Add more members as needed
-];
-
-const Team: React.FC = () => {
-  return (
-    <div className="team-box">
-      <h2>Meet Our Team</h2>
-      <div className="team-container">
-        {teamMembers.map((member, index) => (
-          <div className="team-member" key={index}>
-            <img src={member.photo} alt={member.name} className="team-photo" />
-            <div className="hover-info">
-              <h3>{member.name}</h3>
-              <p>{member.contact}</p>
-              <p>{member.email}</p>
-              <div className="social-icons">
-                <a href={member.linkedIn} target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
-                <a href={member.facebook} target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
-                <a href={member.github} target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-export default Team;
+export default Team
