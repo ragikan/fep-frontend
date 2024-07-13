@@ -1,9 +1,7 @@
-// components/ProjectCard.js
 "use client";
-import { useState } from 'react';
+import { Project } from '@/models/projects';
 import Link from 'next/link';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
@@ -13,11 +11,15 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import { useBookmarks } from './BookmarkContext';
 import styles from './Card.module.css';
 
-export default function ProjectCard({ project }) {
+interface ProjectCardProps {
+  project: Project;
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const { addBookmark } = useBookmarks();
 
-  const handleBookmarkClick = (e) => {
-    e.stopPropagation(); 
+  const handleBookmarkClick = (e: { stopPropagation: () => void; }) => {
+    e.stopPropagation();
     addBookmark(project);
   };
 
@@ -26,7 +28,7 @@ export default function ProjectCard({ project }) {
       <CardMedia
         component="img"
         height="140"
-        image={project.image || '/default-image.jpg'} // Add a default image if none is provided
+        image={project.image || 'https://ircell.iitkgp.ac.in/media/George-Gilbert-Scott-Cambridge-St-Johns-College_zQtFT8P.webp'} // Add a default image if none is provided
         alt={project.project_name}
         className={styles.cardMedia}
       />
@@ -35,7 +37,7 @@ export default function ProjectCard({ project }) {
           {project.project_name}
         </Typography>
         <Typography variant="body2" color="textSecondary">
-          {project.university_name}
+          {project.university_location}
         </Typography>
         <Typography variant="body2" color="textSecondary">
           Project Mode: {project.project_mode}
@@ -45,17 +47,15 @@ export default function ProjectCard({ project }) {
         </Typography>
       </CardContent>
       <div className={styles.bookmarkIcon}>
-        <Link href="/favorites" passHref>
-          <IconButton onClick={handleBookmarkClick} color="primary">
-            <BookmarkBorderIcon />
-          </IconButton>
-        </Link>
+        <IconButton onClick={handleBookmarkClick} color="primary">
+          <BookmarkBorderIcon />
+        </IconButton>
       </div>
       <div className={styles.cardOverlay}>
         <Typography variant="body2" className={styles.cardDescription}>
           {project.project_details}
         </Typography>
-        <Link href={`/${project.id}`} passHref>
+        <Link href={`${project.ID}`} passHref>
           <Button size="small" variant="contained" className={styles.readMoreButton}>
             Read More
           </Button>
@@ -63,4 +63,6 @@ export default function ProjectCard({ project }) {
       </div>
     </Card>
   );
-}
+};
+
+export default ProjectCard;
