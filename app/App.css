@@ -56,7 +56,7 @@ header ul li a:hover {
 /* Hero section styles */
 #hero {
   height: 100vh;
-  background: linear-gradient(to right ,rgba(0, 0, 0, 0.75)0%, rgba(0, 0, 0, 0)50% , rgba(0,0,0,.6))100%, url('q6.jpg') no-repeat center center/cover fixed;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.75)0%, rgba(0, 0, 0, 0)50%, rgba(0, 0, 0, .6))100%, url('q6.jpg') no-repeat center center/cover fixed;
   z-index: -1112;
   display: flex;
   justify-content: flex-start;
@@ -77,7 +77,7 @@ header ul li a:hover {
   text-align: left;
 }
 
-.hero-explore{
+.hero-explore {
   margin-top: 2rem;
   font-size: 1.5rem;
   font-weight: bold;
@@ -106,7 +106,7 @@ header ul li a:hover {
 
 .btn:hover {
   background: linear-gradient(90deg, #e52e71, #ff8a00);
-} 
+}
 
 /* About section styles */
 #about {
@@ -165,8 +165,10 @@ header ul li a:hover {
 }
 
 expertise-section ul li:hover {
-  background: #fff; /* Change background to white on hover */
-  color: #333; /* Change text color to black on hover */
+  background: #fff;
+  /* Change background to white on hover */
+  color: #333;
+  /* Change text color to black on hover */
 }
 
 
@@ -214,6 +216,7 @@ footer {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -223,6 +226,7 @@ footer {
   0% {
     transform: translateY(20px);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -231,7 +235,8 @@ footer {
 /* Testimonials section styles */
 #testimonials {
   padding: 2rem;
-  width: 30%; /* Adjust width as needed */
+  width: 30%;
+  /* Adjust width as needed */
   position: absolute;
   right: 0;
   top: 50%;
@@ -249,7 +254,8 @@ footer {
 .testimonial-container {
   position: relative;
   width: 100%;
-  height: 200px; /* Adjust height as needed */
+  height: 200px;
+  /* Adjust height as needed */
   overflow: hidden;
 }
 
@@ -260,11 +266,16 @@ footer {
   left: 50%;
   transform: translate(-50%, -50%) translateX(100%);
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+  background: rgba(255, 255, 255, 0.8);
+  /* Slightly transparent background */
   border-radius: 10px;
   text-align: center;
   opacity: 0;
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); 
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .testimonial-card.active {
@@ -298,21 +309,24 @@ footer {
     margin-top: 4rem;
   }
 
-  .navbar-link{
+  .navbar-link {
     display: none;
   }
-  
+
 }
 
 
-body, html, #root, .App {
+body,
+html,
+#root,
+.App {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
 }
 
 .navbar {
-  background: rgba(255, 255, 255, 0.7); 
+  background: rgba(255, 255, 255, 0.7);
   height: 60px;
   display: flex;
   justify-content: space-between;
@@ -331,7 +345,8 @@ body, html, #root, .App {
 }
 
 .navbar-logo {
-  height: 40px; 
+  height: 40px;
+  width: auto;
   margin-right: 10px;
 }
 
@@ -388,7 +403,7 @@ body, html, #root, .App {
 
 :root {
   --color-bg1: rgb(108, 0, 162);
-  --color-bg2: rgb(8,17,82);
+  --color-bg2: rgb(8, 17, 82);
   --color1: 18, 113, 255;
   --color2: 221, 74, 255;
   --color3: 100, 220, 255;
@@ -403,7 +418,7 @@ body, html, #root, .App {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(rgb(255, 255, 255,0.1), rgba(255, 255, 255, 0.5)),url('world.jpg');
+  background: linear-gradient(rgb(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5)), url('world.jpg');
 }
 
 .teamheader {
@@ -419,10 +434,10 @@ body, html, #root, .App {
 }
 
 .teamheading {
- font-size: 3rem;
- font-weight: 500;
- font-family: serif;
- border-bottom: 2px solid white;
+  font-size: 3rem;
+  font-weight: 500;
+  font-family: serif;
+  border-bottom: 2px solid white;
 }
 
 .teamSection {
@@ -442,15 +457,15 @@ body, html, #root, .App {
 
 @media (min-aspect-ratio: 16/9) {
   .teamvideo {
-      width: 100%;
-      height: auto;
+    width: 100%;
+    height: auto;
   }
 }
 
 @media (max-aspect-ratio: 16/9) {
   .teamvideo {
-      width: auto;
-      height: 100%;
+    width: auto;
+    height: 100%;
   }
 }
 
@@ -517,12 +532,12 @@ body, html, #root, .App {
 
 @media (max-width: 1024px) {
   .teamSection {
-      grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
   .teamSection {
-      grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 }
