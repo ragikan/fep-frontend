@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import team from './faq';
-import logo from './iitklogo.png'; 
-import contactus from './contactus';
-import Statistics from './Statistics';
-import Faq from './team';
+"use client";
+
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import Team from "./faq";
+import logo from "./iitklogo.png";
+import Contactus from "./contactus";
+import Statistics from "./Statistics";
+import Faq from "./team";
+import Image from "next/image";
 
 const App: React.FC = () => {
   return (
@@ -18,24 +21,28 @@ const App: React.FC = () => {
 
       {/* <Programs /> */}
       <Faq />
-      <team/>
-      <contactus/> 
+      <Team />
+      <Contactus />
       <Footer />
     </div>
   );
 };
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  handleSignInClick: () => void;
+}
+
+const Header: React.FC = ({}) => {
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <img src={logo} alt="IIT Kanpur Logo" className="navbar-logo" />
+        <Image src={logo} className="navbar-logo" alt="logo" />
         <span className="navbar-title">IIT Kanpur</span>
       </div>
       <ul className="navbar-links">
         <li className="navbar-link">HOME</li>
         <li className="navbar-link">ABOUT</li>
-        <li className="navbar-link">EXPERTIESE</li>
+        <li className="navbar-link">EXPERTISE</li>
         <li className="navbar-link">FAQ</li>
         <li className="navbar-link">TEAM</li>
         <li className="navbar-link">CONTACT</li>
@@ -62,25 +69,25 @@ const Testimonials: React.FC = () => {
       id: 1,
       name: "John Doe",
       text: "This program was a life-changing experience.",
-      image: "https://via.placeholder.com/80"
+      image: "https://via.placeholder.com/80",
     },
     {
       id: 2,
       name: "Jane Smith",
       text: "I learned so much about different cultures.",
-      image: "https://via.placeholder.com/80"
+      image: "https://via.placeholder.com/80",
     },
     {
       id: 3,
       name: "Alice Johnson",
       text: "An amazing opportunity to grow both personally and professionally.",
-      image: "https://via.placeholder.com/80"
-    }
+      image: "https://via.placeholder.com/80",
+    },
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIndex(prevIndex => (prevIndex + 1) % testimonials.length);
+      setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
     }, 10000); // Change testimonial every 3 seconds
 
     return () => clearInterval(interval);
@@ -93,7 +100,9 @@ const Testimonials: React.FC = () => {
         {testimonials.map((testimonial, index) => (
           <div
             key={testimonial.id}
-            className={`testimonial-card ${index === activeIndex ? 'active' : ''}`}
+            className={`testimonial-card ${
+              index === activeIndex ? "active" : ""
+            }`}
           >
             <img src={testimonial.image} alt={testimonial.name} />
             <p>{testimonial.text}</p>
@@ -107,18 +116,18 @@ const Testimonials: React.FC = () => {
 
 const HeroSection: React.FC = () => {
   useEffect(() => {
-    const textContainer = document.querySelector('.animated-text');
+    const textContainer = document.querySelector(".animated-text");
     const texts = ["to provide international exposure."];
     let textIndex = 0;
     let charIndex = 0;
-    let currentText = '';
+    let currentText = "";
     let isDeleting = false;
     let isRewriting = false;
     let deleteStartIndex = 0;
 
     function type() {
       const currentString = texts[textIndex];
-      const words = currentString.split(' ');
+      const words = currentString.split(" ");
 
       if (!isDeleting && !isRewriting) {
         if (charIndex < currentString.length) {
@@ -128,7 +137,7 @@ const HeroSection: React.FC = () => {
           setTimeout(type, 100);
         } else {
           isDeleting = true;
-          deleteStartIndex = currentText.lastIndexOf(words.slice(-3).join(' '));
+          deleteStartIndex = currentText.lastIndexOf(words.slice(-3).join(" "));
           setTimeout(type, 2000);
         }
       } else if (isDeleting && !isRewriting) {
@@ -151,7 +160,7 @@ const HeroSection: React.FC = () => {
           isDeleting = false;
           isRewriting = false;
           textIndex = (textIndex + 1) % texts.length;
-          currentText = '';
+          currentText = "";
           charIndex = 0;
           setTimeout(type, 2000);
         }
@@ -161,15 +170,15 @@ const HeroSection: React.FC = () => {
     type();
 
     const handleScroll = () => {
-      const heroSection = document.querySelector('#hero');
+      const heroSection = document.querySelector("#hero");
       const scrollPosition = window.pageYOffset;
       heroSection.style.backgroundPositionY = `${-scrollPosition * 0.5}px`; // Adjust the factor for the desired smoothness
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -177,8 +186,9 @@ const HeroSection: React.FC = () => {
     <section id="hero">
       <div className="hero-content">
         <h1>Welcome to the Foreign Exposure Program</h1>
-        <div className='hero-explore'>
-          Explore new opportunities and expand your horizons with our unique programs designed
+        <div className="hero-explore">
+          Explore new opportunities and expand your horizons with our unique
+          programs designed
         </div>
         <div className="animated-text"></div>
         <button className="btn">Apply now</button>
@@ -191,12 +201,19 @@ const HeroSection: React.FC = () => {
 const About: React.FC = () => {
   return (
     <section id="about">
-      <div style={{ textAlign: 'center' }}>
-        <img src="map.png" alt="Map Image" style={{ maxWidth: '100%', maxHeight: '110px' }} />
+      <div style={{ textAlign: "center" }}>
+        <img
+          src="map.png"
+          alt="Map Image"
+          style={{ maxWidth: "100%", maxHeight: "110px" }}
+        />
       </div>
-      <h2 style={{ fontSize: '2.5rem' }}>About Us</h2>
+      <h2 style={{ fontSize: "2.5rem" }}>About Us</h2>
       <p className="about-description">
-        The Foreign Exposure Program is dedicated to offering comprehensive international experiences that enrich personal and professional growth. Our programs are crafted to provide immersive exposure to different cultures, industries, and educational systems.
+        The Foreign Exposure Program is dedicated to offering comprehensive
+        international experiences that enrich personal and professional growth.
+        Our programs are crafted to provide immersive exposure to different
+        cultures, industries, and educational systems.
       </p>
     </section>
   );
@@ -204,20 +221,18 @@ const About: React.FC = () => {
 
 const ExpertiseSection: React.FC = () => {
   useEffect(() => {
-    const textContainer2 = document.querySelector('.animated-text2');
-    const texts2 = [
-      "academics and its unparalleled faculty."
-    ];
+    const textContainer2 = document.querySelector(".animated-text2");
+    const texts2 = ["academics and its unparalleled faculty."];
     let textIndex2 = 0;
     let charIndex2 = 0;
-    let currentText2 = '';
+    let currentText2 = "";
     let isDeleting2 = false;
     let isRewriting2 = false;
     let deleteStartIndex2 = 0;
 
     function type2() {
       const currentString2 = texts2[textIndex2];
-      const words2 = currentString2.split(' ');
+      const words2 = currentString2.split(" ");
 
       if (!isDeleting2 && !isRewriting2) {
         if (charIndex2 < currentString2.length) {
@@ -227,7 +242,9 @@ const ExpertiseSection: React.FC = () => {
           setTimeout(type2, 100);
         } else {
           isDeleting2 = true;
-          deleteStartIndex2 = currentText2.lastIndexOf(words2.slice(-3).join(' '));
+          deleteStartIndex2 = currentText2.lastIndexOf(
+            words2.slice(-3).join(" ")
+          );
           setTimeout(type2, 2000);
         }
       } else if (isDeleting2 && !isRewriting2) {
@@ -250,7 +267,7 @@ const ExpertiseSection: React.FC = () => {
           isDeleting2 = false;
           isRewriting2 = false;
           textIndex2 = (textIndex2 + 1) % texts2.length;
-          currentText2 = '';
+          currentText2 = "";
           charIndex2 = 0;
           setTimeout(type2, 2000);
         }
@@ -264,8 +281,13 @@ const ExpertiseSection: React.FC = () => {
     <section id="expertise-section">
       <div className="content">
         <div className="intro-text">
-          <p><h2>Our Expertise:</h2> IIT Kanpur has 14 Undergraduate departments and 15 Postgraduate departments, each having a great talent pool honed to suit the needs of academia by our excellent</p>
-          <p className="animated-text2"></p></div>
+          <p>
+            <h2>Our Expertise:</h2> IIT Kanpur has 14 Undergraduate departments
+            and 15 Postgraduate departments, each having a great talent pool
+            honed to suit the needs of academia by our excellent
+          </p>
+          <p className="animated-text2"></p>
+        </div>
         <div className="departments">
           <p>The departments are:</p>
           <ul>
@@ -303,15 +325,24 @@ const Programs: React.FC = () => {
       <div className="programs-container">
         <div className="program">
           <h3>Program One</h3>
-          <p>An immersive cultural experience in Europe, exploring historical landmarks and contemporary innovations.</p>
+          <p>
+            An immersive cultural experience in Europe, exploring historical
+            landmarks and contemporary innovations.
+          </p>
         </div>
         <div className="program">
           <h3>Program Two</h3>
-          <p>A professional development program in Asia, focusing on industry-specific training and networking opportunities.</p>
+          <p>
+            A professional development program in Asia, focusing on
+            industry-specific training and networking opportunities.
+          </p>
         </div>
         <div className="program">
           <h3>Program Three</h3>
-          <p>An educational tour in North America, visiting leading universities and participating in academic exchanges.</p>
+          <p>
+            An educational tour in North America, visiting leading universities
+            and participating in academic exchanges.
+          </p>
         </div>
       </div>
     </section>
