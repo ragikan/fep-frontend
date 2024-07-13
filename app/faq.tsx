@@ -7,7 +7,7 @@ interface FaqProps {
     // Define any props here if needed
 }
 
-const Faq: React.FC<FaqProps> = (props) => {
+const team: React.FC<FaqProps> = (props) => {
     return (
         <div className={styles.bod}>
             <header className={styles.header}>
