@@ -4,7 +4,6 @@ import Faq from './faq';
 import logo from './iitklogo.png'; 
 import contactus from './contactus';
 import team from './team';
-import Navbar from './Navbar'; // Adjust the import path based on your directory structure
 
 const App: React.FC = () => {
   return (
@@ -18,7 +17,7 @@ const App: React.FC = () => {
       {/* <Programs /> */}
       <Faq />
       <team/>
-      <contactus/> {/* Add the FAQ component here */}
+      <contactus/> 
       <Footer />
     </div>
   );
